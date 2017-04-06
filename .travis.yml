@@ -1,0 +1,11 @@
+language: node_js
+node_js: node
+services:
+- mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: F9T9CHBnUvz+URkhX35bNuchGVlj80rkozEg2kOcsRFfOMsb+ZYJ4zI++T0lLpOyvtFmZS3759fJFCvtkH8ICsAJNCt/g0kNiQLhmsSHbUyrdn5qd1t3f0K5GB6c7md9Csph3ZHNvNRwmaKk66YC4Q4vSPtArZ7kWHgpCvALAZAvhKH0XBSFkmu23HsKIV4P2rEZvvkmxzv7qS+BYsKIjauxM+/Fu9o1UiRJmd36p5otZptnnegPdn0MdIP2udmyerkKltSS5+axIuzCELyM8Vw49KkZFY2ohawqGSinZngQjkm45q1sSTpG+8FjGFxG5mUCiTAXkKJtvYr/IbplWEBim1K37UeEEzfK4GjnmoJK6t0IOxpRCcxyJsVKeL8jkjRX5T5fLYjWYfVPPh7DdWCjWmOYia2k+sA6MOFDM16DItnQgZmk0tEp3EjWTT08mz9E9RZB1rOGgifjI1cBbCfmpfmbBpxEbAEQtkt0EO4iSLvS6u582zDxDMccDwVAxjBGuNyHVJbc/IaFMW+tH8wdcziXNcLzVaxu01fLfjFwG1susGXZhE7q+D6tb1GfzgS+EGvttukoka9l/M0YgCQqBZzPyfoJ0MD2XCk8miaECBMK0D9TU0AWUA9LZpJVGXQLFRgQtb9oml+AwGXinM3fmc6YUAq8JqYUbDzxJps=
+  app: secret-spire-77354
+  on:
+    repo: krothenbaum/blog-app-mongoose-challenge-solution
