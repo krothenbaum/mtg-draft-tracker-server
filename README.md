@@ -1,2 +1,2 @@
-Blog app challenge solution
+MTG Draft Tracker
 ==========================
