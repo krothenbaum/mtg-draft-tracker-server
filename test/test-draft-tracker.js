@@ -56,14 +56,18 @@ function generateColorsPlayed() {
 	return magicColors[Math.floor(Math.random() * magicColors.length)];
 }
 
+function generateResult() {
+	return Math.random() >= 0.5;
+}
+
 function generateMatches() {
 	let matches = [];
 	for (let i = 0; i<3; i++) {
 		const match = {
 			matchName: `match${i+1}`,
-			matchWon: Math.random() >= 0.5,
-			gamesWon: Math.floor(Math.random() * 2),
-			gamesLost: Math.floor(Math.random() * 2)
+			matchWon: generateResult(),
+			gamesWon: Math.floor(Math.random() * 3),
+			gamesLost: Math.floor(Math.random() * 3)
 		}
 		matches.push(match);
 	}
@@ -74,7 +78,7 @@ function generateDrafts() {
 	let drafts = [];
 	for (let i = 0; i < 3; i++) {
 		const draft = {
-			date: Date.now,
+			date: faker.date.past(),
 			sets: generateSets(),
 			format: generateFormat(),
 			colorsPlayed: generateColorsPlayed(),
@@ -82,6 +86,7 @@ function generateDrafts() {
 		}
 		drafts.push(draft);
 	}
+	console.log(drafts);
 	return drafts;
 }
 
@@ -137,7 +142,6 @@ describe('Blog API resource', function() {
    	.get('/users')
    	.then(function(_res) {
    		res = _res;
-   		console.log(res);
    		res.should.have.status(200);
    		res.body.should.have.length.of.at.least(1);
    		return User.count();
