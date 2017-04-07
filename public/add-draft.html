@@ -31,10 +31,10 @@
 	</header>
 	<main>
 		<section>
-			<form action="/users/58e582940b75c7233c14c0e2/drafts" method="PUT">
+			<form action="/users/58e582940b75c7233c14c0e2/drafts" method="POST">
 				<div class="form-row">
 					<label for="date">Date:</label>
-					<input type="date">
+					<input type="date" name="date">
 				</div>
 				<div class="form-row">				
 				<label for="set">Set:</label>
@@ -56,7 +56,7 @@
 				</div>
 				<div class="form-row">
 					<label for="colors">Colors:</label>
-					<select name="colors-dropdown" id="colors">
+					<select name="colorsPlayed" id="colorsPlayed">
 						<option value="White Blue">White/Blue</option>
 						<option value="Blue Black">Blue/Black</option>
 						<option value="Black Red">Black/Red</i></option>
@@ -71,31 +71,58 @@
 				</div>
 				<div class="form-row">
 					<label for="Match 1">Match 1:</label>
-					<select name="match-one" id="match-one">
-						<option value="Won 2-0">Won 2-0</option>
-						<option value="Won 2-0">Won 2-1</option>
-						<option value="Lost 1-2">Lost 1-2</option>
-						<option value="Lost 0-2">Lost 0-2</option>
+					<input type="hidden" name="matches[0][matchName]" value="matchOne">
+					<label for="matchWon">Match Won?</label>
+					<input type="checkbox" name="matches[0][matchWon]" value="true">
+					<label for="gamesWon">Games Won:</label>
+					<select name="matches[0][gamesWon]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
+					</select>
+					<label for="gamesLost">Games Lost:</label>
+					<select name="matches[0][gamesLost]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
 					</select>
 				</div>
 				<div class="form-row">
-					<label for="Match 2">Match 2:</label>
-					<select name="match-two" id="match-two">
-						<option value="Won 2-0">Won 2-0</option>
-						<option value="Won 2-0">Won 2-1</option>
-						<option value="Lost 1-2">Lost 1-2</option>
-						<option value="Lost 0-2">Lost 0-2</option>
+					<label for="Match 2">Match 1:</label>
+					<input type="hidden" name="matches[1][matchName]" value="matchTwo">
+					<label for="matchWon">Match Won?</label>
+					<input type="checkbox" name="matches[1][matchWon]" value="true">
+					<label for="gamesWon">Games Won:</label>
+					<select name="matches[1][gamesWon]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
+					</select>
+					<label for="gamesLost">Games Lost:</label>
+					<select name="matches[1][gamesLost]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
 					</select>
 				</div>
 				<div class="form-row">
-					<label for="Match 3">Match 3:</label>
-					<select name="match-three" id="match-three">
-						<option value="Won 2-0">Won 2-0</option>
-						<option value="Won 2-0">Won 2-1</option>
-						<option value="Lost 1-2">Lost 1-2</option>
-						<option value="Lost 0-2">Lost 0-2</option>
+					<label for="Match 2">Match 1:</label>
+					<input type="hidden" name="matches[2][matchName]" value="matchThree">
+					<label for="matchWon">Match Won?</label>
+					<input type="checkbox" name="matches[2][matchWon]" value="true">
+					<label for="gamesWon">Games Won:</label>
+					<select name="matches[2][gamesWon]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
 					</select>
-				</div>
+					<label for="gamesLost">Games Lost:</label>
+					<select name="matches[2][gamesLost]">
+						<option value="2">2</option>
+						<option value="1">1</option>
+						<option value="0">0</option>
+					</select>
+				</div>				
 				<input type="submit" value="Add Draft">
 			</form>
 		</section>

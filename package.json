@@ -1,7 +1,7 @@
 {
-  "name": "blog-app-challenge-starter-files",
+  "name": "MTG-Draft-Tracker",
   "version": "0.0.1",
-  "description": "Blog app",
+  "description": "Magic: The Gathering Draft Tracker",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

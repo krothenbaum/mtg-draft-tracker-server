@@ -7,7 +7,7 @@ const draftSchema = mongoose.Schema({
   colorsPlayed: String,
   matches: [{
     matchName: String,
-    won: Boolean,
+    matchWon: Boolean,
     gamesWon: Number,
     gamesLost: Number
   }]
@@ -40,13 +40,14 @@ userSchema.methods.apiRepr = function() {
 
 userSchema.methods.draftRepr = function() {
   return {
-    id: this._id,
-    sets: this.sets,
-    format: this.format,
-    colorsPlayed: this.colorsPlayed
+    id: this.drafts._id,
+    sets: this.drafts.sets,
+    format: this.drafts.format,
+    colorsPlayed: this.drafts.colorsPlayed,
+    matches: this.drafts.matches
   };
 }
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {User}
+module.exports = {User};

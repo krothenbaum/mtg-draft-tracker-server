@@ -49,7 +49,7 @@ app.get('/users/:id/drafts', (req, res) => {
       user.drafts.forEach(draft => {
         drafts.push(draft);
       });
-      res.json(drafts);
+      res.json(user.draftRepr());
     })
     .catch(err => {
         console.error(err);
@@ -85,8 +85,8 @@ app.post('/users', (req, res) => {
 });
 
 //Update user with new draft record
-app.put('/users/:id/drafts', (req, res) => {
-  const requiredFields = ['sets', 'format', 'colorsPlayed','matches'];
+app.post('/users/:id/drafts', (req, res) => {
+  const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
     if (!(field in req.body)) {
@@ -124,6 +124,23 @@ app.delete('/users/:id', (req, res) => {
 });
 
 
+//remove draft record by draft id from user by user id
+app.delete('/users/:id/draft/:draftid', (req, res) => {
+  User
+    .findById(req.params.id)
+    .exec()
+    .then((user) => {
+      user.drafts.pull({_id: req.params.draftid});
+      user.save();
+      res.status(204).json({message: 'draft record removed'});
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({error: 'something went wrong'});
+    });
+});
+
+
 app.put('/users/:id', (req, res) => {
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     res.status(400).json({
@@ -145,18 +162,6 @@ app.put('/users/:id', (req, res) => {
     .then(updatedUser => res.status(204).json(updatedUser.apiRepr()))
     .catch(err => res.status(500).json({message: 'Something went wrong'}));
 });
-
-
-app.delete('/:id', (req, res) => {
-  BlogPosts
-    .findByIdAndRemove(req.params.id)
-    .exec()
-    .then(() => {
-      console.log(`Deleted blog post with id \`${req.params.ID}\``);
-      res.status(204).end();
-    });
-});
-
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
