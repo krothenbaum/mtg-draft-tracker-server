@@ -144,6 +144,8 @@ describe('Blog API resource', function() {
    		res.body.should.have.length.of(count);
    	});
 		});
+	});
+});
 
 	// 	it('should return posts with the correct fields', function() {
 	// 		//Strategy: get all posts and check they have expected keys
@@ -256,4 +258,4 @@ describe('Blog API resource', function() {
 	// 			});
 	// 	}); 
 	// });
-});
+// });
