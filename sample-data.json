@@ -1,0 +1,1370 @@
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa624"
+	},
+	"__v": 0,
+	"email": "Gladyce63@hotmail.com",
+	"password": "Reedburgh",
+	"drafts": [
+		{
+			"sets": "MM3",
+			"format": "Swiss League",
+			"colorsPlayed": "Green White",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa62d"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa630"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa62f"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa62e"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-12-15T23:30:52.261Z"
+			}
+		},
+		{
+			"sets": "AER-KLD",
+			"format": "Swiss League",
+			"colorsPlayed": "White Blue",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa629"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa62c"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa62b"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa62a"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-01-10T01:10:54.885Z"
+			}
+		},
+		{
+			"sets": "AER-KLD",
+			"format": "Friendly League",
+			"colorsPlayed": "White Blue",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa625"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa628"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa627"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa626"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-06-30T05:27:31.132Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.898Z"
+	},
+	"name": {
+		"firstName": "Claud",
+		"lastName": "Grant"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa631"
+	},
+	"__v": 0,
+	"email": "Emerald.Larson37@gmail.com",
+	"password": "Kesslerton",
+	"drafts": [
+		{
+			"sets": "AER-KLD",
+			"format": "Swiss League",
+			"colorsPlayed": "Red Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa63a"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa63d"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa63c"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa63b"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-10-28T21:56:20.833Z"
+			}
+		},
+		{
+			"sets": "SOI",
+			"format": "Swiss League",
+			"colorsPlayed": "Blue Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa636"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa639"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa638"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa637"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-01-25T13:37:20.142Z"
+			}
+		},
+		{
+			"sets": "SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa632"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa635"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa634"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa633"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-08-03T12:07:19.475Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.904Z"
+	},
+	"name": {
+		"firstName": "Randall",
+		"lastName": "Herzog"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa63e"
+	},
+	"__v": 0,
+	"email": "Clementina_Pouros@yahoo.com",
+	"password": "Lake Johnnietown",
+	"drafts": [
+		{
+			"sets": "SOI",
+			"format": "Swiss League",
+			"colorsPlayed": "Blue Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa647"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa64a"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa649"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa648"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-05-06T04:57:52.373Z"
+			}
+		},
+		{
+			"sets": "SOI",
+			"format": "Competitive League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa643"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa646"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa645"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa644"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-01-06T01:28:10.083Z"
+			}
+		},
+		{
+			"sets": "KLD",
+			"format": "Competitive League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa63f"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa642"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa641"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa640"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-06-20T20:20:14.539Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.906Z"
+	},
+	"name": {
+		"firstName": "Lyla",
+		"lastName": "Jerde"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa64b"
+	},
+	"__v": 0,
+	"email": "Evelyn3@yahoo.com",
+	"password": "Lake Opal",
+	"drafts": [
+		{
+			"sets": "AER-KLD",
+			"format": "Swiss League",
+			"colorsPlayed": "White Blue",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa654"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa657"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa656"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa655"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-01-30T21:54:45.647Z"
+			}
+		},
+		{
+			"sets": "KLD",
+			"format": "Friendly League",
+			"colorsPlayed": "Red Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa650"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa653"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa652"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa651"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-11-06T10:45:14.280Z"
+			}
+		},
+		{
+			"sets": "MM3",
+			"format": "Friendly League",
+			"colorsPlayed": "Green White",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa64c"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa64f"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa64e"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa64d"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-02-25T23:50:43.183Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.907Z"
+	},
+	"name": {
+		"firstName": "Jarrett",
+		"lastName": "MacGyver"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa658"
+	},
+	"__v": 0,
+	"email": "Anissa8@hotmail.com",
+	"password": "North Nathanael",
+	"drafts": [
+		{
+			"sets": "AER-KLD",
+			"format": "Competitive League",
+			"colorsPlayed": "Red Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa661"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa664"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa663"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa662"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-12-12T08:18:36.828Z"
+			}
+		},
+		{
+			"sets": "SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "Red Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa65d"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa660"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa65f"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa65e"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-01-21T16:50:10.507Z"
+			}
+		},
+		{
+			"sets": "AER-KLD",
+			"format": "Competitive League",
+			"colorsPlayed": "Black Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa659"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa65c"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa65b"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa65a"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-05-07T02:37:14.824Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.908Z"
+	},
+	"name": {
+		"firstName": "Zoila",
+		"lastName": "Mertz"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa665"
+	},
+	"__v": 0,
+	"email": "Casandra97@gmail.com",
+	"password": "Dickinsontown",
+	"drafts": [
+		{
+			"sets": "SOI",
+			"format": "Swiss League",
+			"colorsPlayed": "Black Green",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa66e"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa671"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa670"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa66f"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-09-21T11:37:10.007Z"
+			}
+		},
+		{
+			"sets": "AER-KLD",
+			"format": "Swiss League",
+			"colorsPlayed": "Blue Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa66a"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa66d"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa66c"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa66b"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-07-30T23:51:11.670Z"
+			}
+		},
+		{
+			"sets": "SOI",
+			"format": "Swiss League",
+			"colorsPlayed": "Green White",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa666"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa669"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa668"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa667"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-08-15T08:54:36.463Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.909Z"
+	},
+	"name": {
+		"firstName": "Lindsay",
+		"lastName": "Beahan"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa672"
+	},
+	"__v": 0,
+	"email": "Teresa.Mayer64@hotmail.com",
+	"password": "South Madeline",
+	"drafts": [
+		{
+			"sets": "SOI",
+			"format": "Competitive League",
+			"colorsPlayed": "Blue Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa67b"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa67e"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa67d"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa67c"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-11-15T08:24:19.686Z"
+			}
+		},
+		{
+			"sets": "MM3",
+			"format": "Friendly League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa677"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa67a"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa679"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa678"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-09-12T19:22:53.095Z"
+			}
+		},
+		{
+			"sets": "EMN-SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "Black Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa673"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa676"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa675"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa674"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-10-29T02:52:43.213Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.910Z"
+	},
+	"name": {
+		"firstName": "Gabriel",
+		"lastName": "Reichert"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa67f"
+	},
+	"__v": 0,
+	"email": "Ethan15@yahoo.com",
+	"password": "Kristianville",
+	"drafts": [
+		{
+			"sets": "SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa688"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa68b"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa68a"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa689"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-11-02T22:37:17.568Z"
+			}
+		},
+		{
+			"sets": "MM3",
+			"format": "Competitive League",
+			"colorsPlayed": "Green White",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa684"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa687"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa686"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa685"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-09-24T16:55:17.273Z"
+			}
+		},
+		{
+			"sets": "EMN-SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "White Black",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa680"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa683"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa682"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa681"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-05-14T16:17:29.557Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.914Z"
+	},
+	"name": {
+		"firstName": "Elmo",
+		"lastName": "Crona"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa68c"
+	},
+	"__v": 0,
+	"email": "Glennie.Kirlin60@yahoo.com",
+	"password": "Lessiehaven",
+	"drafts": [
+		{
+			"sets": "SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "White Blue",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa695"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa698"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa697"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa696"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-07-31T09:26:45.292Z"
+			}
+		},
+		{
+			"sets": "AER-KLD",
+			"format": "Friendly League",
+			"colorsPlayed": "Red Whiute",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa691"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa694"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa693"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa692"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-06-07T19:29:31.912Z"
+			}
+		},
+		{
+			"sets": "EMN-SOI",
+			"format": "Friendly League",
+			"colorsPlayed": "Red Whiute",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa68d"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 2,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa690"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa68f"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa68e"
+					}
+				}
+			],
+			"date": {
+				"$date": "2016-11-24T02:13:37.808Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.916Z"
+	},
+	"name": {
+		"firstName": "Sidney",
+		"lastName": "Senger"
+	}
+}
+{
+	"_id": {
+		"$oid": "58e806490ae8a3250ccaa699"
+	},
+	"__v": 0,
+	"email": "Jazmin.Stanton39@yahoo.com",
+	"password": "West Leo",
+	"drafts": [
+		{
+			"sets": "KLD",
+			"format": "Swiss League",
+			"colorsPlayed": "White Blue",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa6a2"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa6a5"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa6a4"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": true,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa6a3"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-02-03T20:59:14.450Z"
+			}
+		},
+		{
+			"sets": "EMN-SOI",
+			"format": "Competitive League",
+			"colorsPlayed": "Blue Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa69e"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa6a1"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa6a0"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 1,
+					"gamesLost": 2,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa69f"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-02-21T19:53:00.142Z"
+			}
+		},
+		{
+			"sets": "MM3",
+			"format": "Competitive League",
+			"colorsPlayed": "Black Red",
+			"_id": {
+				"$oid": "58e806490ae8a3250ccaa69a"
+			},
+			"matches": [
+				{
+					"matchName": "match1",
+					"matchWon": true,
+					"gamesWon": 2,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa69d"
+					}
+				},
+				{
+					"matchName": "match2",
+					"matchWon": true,
+					"gamesWon": 1,
+					"gamesLost": 1,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa69c"
+					}
+				},
+				{
+					"matchName": "match3",
+					"matchWon": false,
+					"gamesWon": 0,
+					"gamesLost": 0,
+					"_id": {
+						"$oid": "58e806490ae8a3250ccaa69b"
+					}
+				}
+			],
+			"date": {
+				"$date": "2017-04-04T20:52:48.903Z"
+			}
+		}
+	],
+	"created": {
+		"$date": "2017-04-07T21:36:09.918Z"
+	},
+	"name": {
+		"firstName": "Virgil",
+		"lastName": "Becker"
+	}
+}

@@ -120,7 +120,7 @@ describe('Blog API resource', function() {
 	});
 
 	afterEach(function() {
-		// return tearDownDb();
+		return tearDownDb();
 	});
 
 	after(function() {
