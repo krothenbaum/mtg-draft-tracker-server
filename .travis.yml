@@ -2,3 +2,10 @@ language: node_js
 node_js: node
 services:
 - mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: TN8N6ox6moe9pg2HWrWg7ZsxMEYzleWs7ho/B99CpqgrB+gToQuLYgZ6WZJhE0hB7p/z4D+l/d1E4RDaCnDnoGSfpr/zA3kvvOQvx2I0T4/fHPeriT0vgdVPRN4y/vW02JFL0zgK83hpz6w/XyC70pfp5m03hNwPP1G63T04ebfU4X9bHs0gKfZazWOu3XHdFOsFRGvLGu8idbxCO8GWAseSJ+fqGBRHhojeWkCfSHxKxaewiiG2ccB1qC2emhAZz7FCGkQl1ItVxRPuZgzFxLCgASIi0AnhmS2oLqnqiGhq7VJ3RK3hT9sm4O1GXb0sR7NtKg7MEmuBT8XH9jkPtjEWEqHUJCEyFLO38d1ZkBLvlj7DXskn9yYV9Rb5lZ/Yq1cNoXW999xWsGgT5Cx2x1smEczcNlqLHWqJrIg5UUDNgSPsaVm0D869ELtsCJd2E+kYrL0r9RE+0el/AgBvjdRP+pKh3tu2c74/c3E4wFjwuE18Nukd81t8mBIs28hzj04A8VNicwCGgplEuSgmlJWNYpzDril4VdPqGeL5rS86ieqIdhEbbzmM9Ub1QqwNlefITpxxJ9pzXWwDifLEEFJwD5kys+SdfTQsb2Xn5Bln6JgNk4Eba/g/8SmvyjH75yWwS8sKtNOWOKCKhr1c1OFTNGyczVj7FfllAS8RKf0=
+  app: radiant-atoll-26052
+  on:
+    repo: krothenbaum/mtg-draft-tracker-server
