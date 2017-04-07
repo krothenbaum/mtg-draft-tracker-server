@@ -51,7 +51,7 @@ function generateFormat() {
 	return magicFormats[Math.floor(Math.random() * magicFormats.length)];
 }
 
-generateWinLost() {
+function generateWinLost() {
 	return Math.random() >= 0.5;
 }
 
