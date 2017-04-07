@@ -73,7 +73,7 @@ function generateDrafts() {
 	let drafts = [];
 	for (let i = 0; i < 3; i++) {
 		const draft = {
-			date: Date.Now(),
+			date: Date.now,
 			sets: generateSets(),
 			format: generateFormat(),
 			colorsPlayed: generateColorsPlayed(),
