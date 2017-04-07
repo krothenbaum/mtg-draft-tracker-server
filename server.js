@@ -20,7 +20,7 @@ app.get('/users', (req, res) => {
     .find()
     .exec()
     .then(users => {
-      res.json(users.map(user => user.apiRepr()));
+      res.status(200).json(users.map(user => user.apiRepr()));
     })
     .catch(err => {
       console.error(err);

@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 // this module
 const should = chai.should();
 
-const {Users} = require('../models');
+const {User} = require('../models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
 
@@ -15,14 +15,14 @@ chai.use(chaiHttp);
 
 //Generates 10 blog posts
 function seedUsers() {
-	console.info('seeding blog posts');
+	console.info('seeding users');
 	const seedUsers = [];
 
 	for (let i = 1; i <= 10; i++) {
 		seedUsers.push(generateUser());
 	}
 
-	return Users.insertMany(seedUsers);
+	return User.insertMany(seedUsers);
 }
 
 //generate post author
@@ -54,10 +54,6 @@ function generateFormat() {
 function generateColorsPlayed() {
 	const magicColors = ['White Blue','Blue Black','Black Red','Red Green','Green White','White Black','Blue Red','Black Green','Red Whiute','Green Blue'];
 	return magicColors[Math.floor(Math.random() * magicColors.length)];
-}
-
-function generateWinLost() {
-	return Math.random() >= 0.5;
 }
 
 function generateMatches() {
@@ -141,9 +137,10 @@ describe('Blog API resource', function() {
    	.get('/users')
    	.then(function(_res) {
    		res = _res;
+   		console.log(res);
    		res.should.have.status(200);
    		res.body.should.have.length.of.at.least(1);
-   		return Users.count();
+   		return User.count();
    	})
    	.then(function(count) {
    		res.body.should.have.length.of(count);
