@@ -51,6 +51,11 @@ function generateFormat() {
 	return magicFormats[Math.floor(Math.random() * magicFormats.length)];
 }
 
+function generateColorsPlayed() {
+	const magicColors = ['White Blue','Blue Black','Black Red','Red Green','Green White','White Black','Blue Red','Black Green','Red Whiute','Green Blue'];
+	return magicColors[Math.floor(Math.random() * magicFormats.length)];
+}
+
 function generateWinLost() {
 	return Math.random() >= 0.5;
 }
