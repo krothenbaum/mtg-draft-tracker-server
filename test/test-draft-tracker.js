@@ -38,7 +38,7 @@ function generateEmail() {
 }
 
 function generatePassword() {
-	return faker.random.bs_noun();
+	return faker.address.city();
 }
 
 function generateSets() {
