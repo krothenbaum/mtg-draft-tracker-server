@@ -86,7 +86,7 @@ function generateDrafts() {
 		}
 		drafts.push(draft);
 	}
-	console.log(drafts);
+
 	return drafts;
 }
 
@@ -120,7 +120,7 @@ describe('Blog API resource', function() {
 	});
 
 	afterEach(function() {
-		return tearDownDb();
+		// return tearDownDb();
 	});
 
 	after(function() {
