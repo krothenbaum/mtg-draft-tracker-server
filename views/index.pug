@@ -1,0 +1,30 @@
+extends layout
+
+block content
+	header
+		a.logo(href='/', data-scroll) MTG Draft Tracker
+		nav.nav-collapse
+			ul
+				if (!user)
+					li.menu-item.active
+						a(href='/register', data-scroll) Create Account
+					li.menu-item.active
+						a(href='/login', data-scroll) Log In
+				if (user)
+					li.menu-item.active
+						a(href='/dashboard', data-scroll) Dashboard
+					li.menu-item
+						a(href='/add-draft', data-scroll) Add Draft
+					li.menu-item
+						a(href='logout', data-scroll) Log Out
+
+
+	main
+		section
+			h1 Magic: The Gathering Draft Tracker
+			h2 Track your MTGO draft statistics
+			i.ms.ms-w.ms-cost
+			i.ms.ms-u.ms-cost
+			i.ms.ms-b.ms-cost
+			i.ms.ms-r.ms-cost
+			i.ms.ms-g.ms-cost

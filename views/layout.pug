@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    title= title
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css')  
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto')
+    link(rel='stylesheet', href='/css/mana.css')
+    link(rel='stylesheet', href='/css/keyrune.css')
+    link(rel='stylesheet', href='/css/styles.css')
+    link(rel='stylesheet', href='/css/main.css')
+    script(src='js/responsive-nav.js')
+  body
+    if (error && error.length > 0)
+      br
+      h4.error-msg= error
+      br
+
+    block content
+
+  script(src='/js/fastclick.js')
+  script(src='/js/scroll.js')
+  script(src='/js/fixed-responsive-nav.js')
+  script(src='http://code.jquery.com/jquery.js')

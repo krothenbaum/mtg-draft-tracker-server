@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const draftSchema = mongoose.Schema({
   date: {type: Date, default: Date.now},
@@ -18,7 +19,7 @@ const userSchema = mongoose.Schema({
     firstName: String,
     lastName: String
   },
-  email: {type: String, required: true},
+  email: {type: String},
   password: {type: String},
   created: {type: Date, default: Date.now},
   drafts: [draftSchema]
@@ -47,6 +48,8 @@ userSchema.methods.draftRepr = function() {
     matches: this.drafts.matches
   };
 }
+
+userSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model('User', userSchema);
 

@@ -1,0 +1,102 @@
+extends layout
+
+block content
+	header
+		a.logo(href='/', data-scroll) MTG Draft Tracker
+		nav.nav-collapse
+			ul
+				if (!user)
+					li.menu-item.active
+						a(href='/register', data-scroll) Create Account
+					li.menu-item.active
+						a(href='/login', data-scroll) Log In
+				if (user)
+					li.menu-item.active
+						a(href='/dashboard', data-scroll) Dashboard
+					li.menu-item
+						a(href='/add-draft', data-scroll) Add Draft
+					li.menu-item
+						a(href='logout', data-scroll) Log Out
+
+	main
+		section
+			form(action='/user', method='POST')
+				.form-row
+					label(for='date') Date:
+					input(type='date', name='date')
+				.form-row
+					label(for='sets') Sets:
+					select(name='sets', id='sets')
+						option(value='AER-KLD') AER-KLD
+						option(value='KLD') KLD
+						option(value='MM3') MM3
+						option(value='EMN-SOI') EMN-SOI
+						option(value='SOI') SOI
+				.form-row
+					label(for='format') Format:
+					select(name='format', id='format')
+						option(value='Swiss League') Swiss League
+						option(value='Competitive League') Competitive League
+						option(value='Friendly League') Friendly League
+				.form-row
+					label(for='colorsPlayed') Colors:
+					select(name='colorsPlayed', id='colorsPlayed')
+						option(value='White Blue') White Blue
+						option(value='Blue Black') Blue Black
+						option(value='Black Red') Black Red
+						option(value='Red Green') Red Green
+						option(value='Green White') Green White
+						option(value='White Black') White Black
+						option(value='Blue Red') Blue Red
+						option(value='Black Green') Black Green
+						option(value='Red White') Red White
+						option(value='Green Blue') Green Blue
+				.form-row
+					label(for='Match 1') Match 1:
+					input(type='hidden',name='matches[0][matchName]', value='match1')
+					label(for='matchWon') Match Won?
+					input(type='checkbox', name='matches[0][matchWon]', value='true')
+					label(for='gamesWon') Games Won:
+					select(name='matches[0][gamesWon]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+					label(for='gamesLost') Games Lost:
+					select(name='matches[0][gamesLost]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+				.form-row
+					label(for='Match 2') Match 2:
+					input(type='hidden',name='matches[1][matchName]', value='match2')
+					label(for='matchWon') Match Won?
+					input(type='checkbox', name='matches[1][matchWon]', value='true')
+					label(for='gamesWon') Games Won:
+					select(name='matches[1][gamesWon]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+					label(for='gamesLost') Games Lost:
+					select(name='matches[1][gamesLost]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+				.form-row
+					label(for='Match 3') Match 3:
+					input(type='hidden',name='matches[2][matchName]', value='match3')
+					label(for='matchWon') Match Won?
+					input(type='checkbox', name='matches[2][matchWon]', value='true')
+					label(for='gamesWon') Games Won:
+					select(name='matches[2][gamesWon]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+					label(for='gamesLost') Games Lost:
+					select(name='matches[2][gamesLost]')
+						option(value='2') 2
+						option(value='1') 1
+						option(value='0') 0
+				.form-row
+					button(type='submit') Submit
+					a(href='/')
+						button(type="button") Cancel					

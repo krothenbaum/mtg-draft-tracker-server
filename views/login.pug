@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  header
+    a.logo(href='/', data-scroll) MTG Draft Tracker
+    nav.nav-collapse
+      if (!user)
+        ul
+          li.menu-item.active
+            a(href='/account', data-scroll) Create Account
+      if (user)
+        ul
+          li.menu-item.active
+            a(href='/dashboard', data-scroll) Dashboard
+          li.menu-item
+            a(href='/add-draft', data-scroll) Add Draft
+          li.menu-item
+            a(href='logout', data-scroll) Log Out
+
+  main
+    section
+      h1 Login Page
+      p.lead Say something worthwhile here.
+      br
+      form(role='form', action="/login", method="post")
+        .form-row
+          label(for='email') Email address:
+          input(type='text', name="username", placeholder='Email Address')
+        .form-row
+          label(for='password') Passwrord:
+          input(type='password', name="password", placeholder='Password')
+        button(type='submit') Submit
+        a(href='/')
+          button(type="button") Cancel
