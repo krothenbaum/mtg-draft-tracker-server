@@ -9,7 +9,7 @@ router.get('/', function (req, res) {
 });
 
 router.get('/register', function(req, res) {
-    res.render('register', { });
+    res.render('register', {title: 'Create a new account' });
 });
 
 router.post('/register', function(req, res) {
@@ -19,7 +19,7 @@ router.post('/register', function(req, res) {
         }
 
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/success');
+            res.redirect('/dashboard');
         });
     });
 });
