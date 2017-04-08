@@ -82,4 +82,17 @@ router.post('/user', (req, res) => {
     });
 });
 
+router.get('/users', (req, res) => {
+  User
+    .find()
+    .exec()
+    .then(users => {
+      res.status(200).json(users.map(user => user.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
 module.exports = router;

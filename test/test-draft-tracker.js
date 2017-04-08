@@ -109,7 +109,7 @@ function tearDownDb() {
  return mongoose.connection.dropDatabase();
 }
 
-describe('Blog API resource', function() {
+describe('Draft Tracker API resource', function() {
 
 	before(function() {
 		return runServer(TEST_DATABASE_URL);
