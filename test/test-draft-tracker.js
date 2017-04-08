@@ -94,7 +94,7 @@ function generateDrafts() {
 function generateUser() {
 	return {
 		name: generateUserName(),
-		email: generateEmail(),
+		username: generateEmail(),
 		password: generatePassword(),
 		drafts: generateDrafts()
 	}
