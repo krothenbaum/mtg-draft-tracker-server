@@ -2,16 +2,39 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const {DATABASE_URL, PORT} = require('./config');
 const {User} = require('./models');
 
+passport.use(new LocalStrategy(
+  function(username, password, done) {
+    User.findOne({ username: insusername }, function (err, user) {
+      if (err) { return done(err); }
+      if (!user) {
+        return done(null, false, { message: 'Incorrect username.' });
+      }
+      if (!user.validPassword(password)) {
+        return done(null, false, { message: 'Incorrect password.' });
+      }
+      return done(null, user);
+    });
+  }
+));
+
 const app = express();
 
-app.use(express.static('public'))
+app.use(express.static('public'));
 app.use(morgan('common'));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({ secret: 'siege rhino' }));
+app.use(passport.initialize());
+app.use(passport.session());
 
 mongoose.Promise = global.Promise;
 
