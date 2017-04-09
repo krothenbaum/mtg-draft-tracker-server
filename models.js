@@ -19,8 +19,9 @@ const userSchema = mongoose.Schema({
     firstName: String,
     lastName: String
   },
-  email: {type: String},
+  username: {type: String},
   password: {type: String},
+  email: {type: String},  
   created: {type: Date, default: Date.now},
   drafts: [draftSchema]
 });

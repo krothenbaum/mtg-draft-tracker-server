@@ -12,16 +12,21 @@ router.get('/register', function(req, res) {
     res.render('register', {title: 'Create a new account' });
 });
 
-router.post('/register', function(req, res) {
-    User.register(new User({ username : req.body.email }), req.body.password, function(err, account) {
-        if (err) {
-            return res.render('register', { account : account });
-        }
+router.post('/register', (req, res) => {
+  User.register(new User({ username : req.body.email }), req.body.password, err => {
+    if (err) {
+      return res.render('register', {});
+    } 
 
-        passport.authenticate('local')(req, res, function () {
-            res.redirect('/dashboard');
-        });
+    passport.authenticate('local')(req, res, () => {
+      req.session.save((err) => {
+        if (err) {
+          return next(err);
+        }
+        res.redirect('/dashboard');
+      });      
     });
+  });
 });
 
 router.get('/login', function(req, res) {
@@ -29,7 +34,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-    res.redirect('/');
+    res.redirect('/dashboard');
 });
 
 router.get('/logout', function(req, res) {

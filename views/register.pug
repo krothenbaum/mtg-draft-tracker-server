@@ -1,22 +1,6 @@
 extends layout
 
 block content
-  header
-    a.logo(href='/', data-scroll) MTG Draft Tracker
-    nav.nav-collapse
-      if (!user)
-        ul
-          li.menu-item.active
-            a(href='/account', data-scroll) Create Account
-      if (user)
-        ul
-          li.menu-item.active
-            a(href='/dashboard', data-scroll) Dashboard
-          li.menu-item
-            a(href='/add-draft', data-scroll) Add Draft
-          li.menu-item
-            a(href='logout', data-scroll) Log Out
-
   main
     section
       h1 Register Page
@@ -27,7 +11,7 @@ block content
           label(for='email') Email address:
           input(type='text', name="email", placeholder='Email Address')
         .form-row
-          label(for='password') Passwrord:
+          label(for='password') Password:
           input(type='password', name="password", placeholder='Password')
           button(type='submit') Submit
           a(href='/')
