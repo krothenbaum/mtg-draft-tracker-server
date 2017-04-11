@@ -3,14 +3,19 @@ extends layout
 block content
   main
     section
-      h1 Start Tracking
-      p.lead Create your account.
-      br
-      form(role='form', action="/register", method="post")
-        .form-row
-          label(for='email') Email address:
-          input(type='text', name="email", placeholder='Email Address')
-        .form-row
-          label(for='password') Password:
-          input(type='password', name="password", placeholder='Password')
-          button.btn(type='submit') Submit
+      .container-fluid
+        .row
+          h1 Start Tracking
+          p.lead Create your account.
+        .row
+          form(role='form', action="/register", method="post")
+            .row
+              label.form-icon(for='email')
+                i.ms.ms-planeswalker.ms-2x
+              input(type='text', name="email", placeholder='Email')
+            .row
+              label.form-icon(for='password')
+                i.ss.ss-usg.ss-2x
+              input(type='password', name="password", placeholder='Password')
+            .row
+              button.btn(type='submit') Submit

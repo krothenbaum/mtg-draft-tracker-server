@@ -32,7 +32,6 @@ p {
   font-size: 1.5em;
 }
 
-
 .btn {
   width: 125px;
   background: #FFF;
@@ -51,9 +50,40 @@ p {
   -moz-transition: all ease 0.8s;
   transition: all ease 0.8s;
 }
+
 .btn:hover {
   box-shadow: inset 200px 0 0 0 #0e68ab;
   color: #FFF;
+}
+
+input {
+  height: 35px;
+  width: 200px;
+  border-left: none;
+  border-top: 1px solid rgb(196,211,202);
+  border-right: 1px solid rgb(196,211,202);
+  border-bottom: 1px solid rgb(196,211,202);
+  padding-left: 8px;
+  margin-top: 8px;
+}
+
+.form-icon {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 40px;
+  background-color: rgb(196,211,202);
+}
+
+.ms, .ss {
+
+  margin: 0;
+}
+
+.ms-planeswalker {
+  margin-left: 1.5px;
+  margin-right: 1.5px;
 }
 
 .container-fluid {
@@ -166,15 +196,15 @@ section#drafts {
   font-size: 14px;
 }
 
-form {
+/*form {
   margin-left: 25%;
   text-align: left;
-}
+}*/
 
-.form-row {
+/*.form-row {
   display: block;
   margin-bottom: 4px;
-}
+}*/
 
 .mana-symbols {
   padding-top: 50px;
