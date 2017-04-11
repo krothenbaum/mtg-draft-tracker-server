@@ -2,11 +2,26 @@ extends layout
 
 block content
 	main
-		section
+		section.scroll-section
 			h1 Magic: The Gathering Draft Tracker
-			h2 Track your MTGO draft statistics
-			i.ms.ms-w.ms-cost
-			i.ms.ms-u.ms-cost
-			i.ms.ms-b.ms-cost
-			i.ms.ms-r.ms-cost
-			i.ms.ms-g.ms-cost
+			h2 Tirelessly track your draft results
+			.mana-symbols
+				i.ms.ms-w.ms-cost.ms-2x.slideUp
+				i.ms.ms-u.ms-cost.ms-2x.slideUp
+				i.ms.ms-b.ms-cost.ms-2x.slideUp
+				i.ms.ms-r.ms-cost.ms-2x.slideUp
+				i.ms.ms-g.ms-cost.ms-2x.slideUp
+			.row
+				a(href='/register')
+					button.btn sign up
+			.row
+				a(href='/login')
+					button.btn log in
+		section.scroll-section(id='section-one')
+			h3 Enter your draft results
+			p Quickly enter your draft results from any device.
+			img(src='./images/tireless-tracker.jpg')
+		section.scroll-section(id='section-two')
+			h3 Track your metrics.
+			p Track your match and game win rate across sets, formats, and colors played.
+			img(src='./images/ulvenwald-tracker.jpg')

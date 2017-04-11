@@ -3,8 +3,8 @@ extends layout
 block content
   main
     section
-      h1 Register Page
-      p.lead Create a new account.
+      h1 Start Tracking
+      p.lead Create your account.
       br
       form(role='form', action="/register", method="post")
         .form-row
@@ -13,6 +13,4 @@ block content
         .form-row
           label(for='password') Password:
           input(type='password', name="password", placeholder='Password')
-          button(type='submit') Submit
-          a(href='/')
-            button(type="button") Cancel
+          button.btn(type='submit') Submit

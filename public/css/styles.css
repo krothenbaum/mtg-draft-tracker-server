@@ -106,7 +106,7 @@ body {
 section {
   border-bottom: 1px solid #999;
   text-align: center;
-  padding: 100px 0 0;
+  padding: 80px 0 0;
 /*  height: 800px;*/
   width: 100%;
 }
@@ -126,7 +126,7 @@ p {
 --------------------------------------------- */
 
 header {
-  background: #c4c4c4;
+  background: #ffffff;
   position: fixed;
   z-index: 3;
   width: 100%;
@@ -292,7 +292,7 @@ header {
 }
 
 .nav-toggle:before {
-  color: #fff; /* Edit this to change the icon color */
+  color: #000; /* Edit this to change the icon color */
   font: normal 28px/55px "responsivenav"; /* Edit font-size (28px) to change the icon size */
   text-transform: none;
   text-align: center;
