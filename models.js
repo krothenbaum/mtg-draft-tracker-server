@@ -30,6 +30,7 @@ userSchema.virtual('userName').get(function() {
   return `${this.name.firstName} ${this.name.lastName}`.trim();
 });
 
+
 userSchema.methods.apiRepr = function() {
   return {
     id: this._id,

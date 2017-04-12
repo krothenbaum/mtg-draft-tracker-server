@@ -13,15 +13,41 @@ block content
 			.draft-table
 				.draft-rows
 					.draft-row(id='draft-table-header')
+						.draft-heading-cell(id='heading-details') Details
 						.draft-heading-cell(id='heading-date') Date
 						.draft-heading-cell(id='heading-set') Set
 						.draft-heading-cell(id='heading-format') Format
 						.draft-heading-cell(id='heading-colors') Colors
 						.draft-heading-cell(id='heading-record') Record
+						.draft-heading-cell(id='heading-edit') Edit
+						.draft-heading-cell(id='heading-delete') Delete
 					if user.drafts.length > 0
-						.draft-row(id= user.drafts[0].id)
-							.draft-cell= user.drafts[0].date
-							.draft-cell= user.drafts[0].sets
-							.draft-cell= user.drafts[0].format
-							.draft-cell= user.drafts[0].colorsPlayed
-						
+						each draft in user.drafts
+							.draft-row(id= draft.id)
+								.draft-cell +
+								.draft-cell= moment(draft.date).format("D/M/YY")
+								.draft-cell= draft.sets
+								.draft-cell= draft.format
+								.draft-cell
+									case draft.colorsPlayed
+										when 'White Blue'
+											i.ms.ms-wu.ms-split.ms-cost
+										when 'Blue Black'
+											i.ms.ms-ub.ms-split.ms-cost
+										when 'Black Red'
+											i.ms.ms-br.ms-split.ms-cost
+										when 'Red Green'
+											i.ms.ms-rg.ms-split.ms-cost
+										when 'Green White'
+											i.ms.ms-gw.ms-split.ms-cost
+										when 'White Black'
+											i.ms.ms-wb.ms-split.ms-cost
+										when 'Blue Red'
+											i.ms.ms-ur.ms-split.ms-cost
+										when 'Black Green'
+											i.ms.ms-bg.ms-split.ms-cost
+										when 'Red White'
+											i.ms.ms-rw.ms-split.ms-cost
+										when 'Green Blue'
+											i.ms.ms-gu.ms-split.ms-cost
+								.draft-cell= matchesWon(draft.matches)

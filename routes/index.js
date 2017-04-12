@@ -61,6 +61,7 @@ router.get('/dashboard', (req, res) => {
     res.render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
+//add a draft
 router.post('/user', (req, res) => {
   const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
   for (let i=0; i<requiredFields.length; i++) {
@@ -78,7 +79,6 @@ router.post('/user', (req, res) => {
     .then(user => {
       user.drafts.push(req.body);
       user.save();
-      // res.status(201).json(user.apiRepr());
       res.status(201).redirect('/dashboard');
     })
     .catch(err => {
@@ -86,6 +86,17 @@ router.post('/user', (req, res) => {
       res.status(500).json({error: 'Something went wrong'});
     });
 });
+
+router.delete('/user/:draftid', (req, res) => {
+  User
+    .findById(req.user.id)
+    .exec()
+    .then(user => {
+      user.drafts.pull(req.params.drafid);
+      user.save();
+      res.status(204).redirect('/dashboard');
+    })
+})
 
 router.get('/users', (req, res) => {
   User

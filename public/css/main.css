@@ -192,6 +192,10 @@ section#drafts {
   font-weight: 700;
 }
 
+.draft-cell {
+  font-size: 12px;
+}
+
 .draft-cell i {
   font-size: 14px;
 }

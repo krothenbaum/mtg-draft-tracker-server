@@ -17,7 +17,7 @@
 				{
 					"matchName": "match1",
 					"matchWon": true,
-					"gamesWon": 1,
+					"gamesWon": 2,
 					"gamesLost": 1,
 					"_id": {
 						"$oid": "58e806490ae8a3250ccaa630"

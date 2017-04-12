@@ -6,6 +6,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
 
+
 const {DATABASE_URL, PORT} = require('./config');
 const {User} = require('./models');
 
@@ -28,12 +29,30 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use('/', routes);
+app.locals.moment = require('moment');
 
 mongoose.Promise = global.Promise;
 
 passport.use(new LocalStrategy({usernameField: 'email'}, User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+function matchesWon(matches) {
+  let won = 0;
+  let lost = 0;
+  matches.forEach(match => {
+    if (match.matchWon) {
+      won++;
+    }
+    else {
+      lost++;
+    }
+  })
+  return `${won} - ${lost}`;
+}
+
+app.locals.matchesWon = matchesWon;
+
 
 
 
