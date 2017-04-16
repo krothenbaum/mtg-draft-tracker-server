@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 	$.scrollify({
 		section: '.scroll-section',

@@ -25,7 +25,7 @@ block content
 						each draft in user.drafts
 							.draft-row(id= draft.id)
 								.draft-cell +
-								.draft-cell= moment(draft.date).format("D/M/YY")
+								.draft-cell= moment(draft.date).format("M/D/YY")
 								.draft-cell= draft.sets
 								.draft-cell= draft.format
 								.draft-cell
@@ -51,3 +51,13 @@ block content
 										when 'Green Blue'
 											i.ms.ms-gu.ms-split.ms-cost
 								.draft-cell= matchesWon(draft.matches)
+								.draft-cell
+									form(role='form', action='/edit-draft', method='POST')
+										input(type='hidden', value= user.id, name='userid')
+										input(type='hidden', value= draft.id, name='draftid')
+										button Edit
+								.draft-cell
+									form(role='form', action='/user/draft/delete', method='POST')
+										input(type='hidden', value= user.id, name='userid')
+										input(type='hidden', value= draft.id, name='draftid')
+										button(type='submit') Delete

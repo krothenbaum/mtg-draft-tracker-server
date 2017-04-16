@@ -63,11 +63,12 @@ function generateResult() {
 function generateMatches() {
 	let matches = [];
 	for (let i = 0; i<3; i++) {
+		const numWon Math.floor(Math.random() * 3)
 		const match = {
 			matchName: `match${i+1}`,
 			matchWon: generateResult(),
-			gamesWon: Math.floor(Math.random() * 3),
-			gamesLost: Math.floor(Math.random() * 3)
+			gamesWon: numWon,
+			gamesLost: 2-numWon
 		}
 		matches.push(match);
 	}
@@ -90,7 +91,7 @@ function generateDrafts() {
 	return drafts;
 }
 
-//generate object representing a blog post
+//generate a User
 function generateUser() {
 	return {
 		name: generateUserName(),

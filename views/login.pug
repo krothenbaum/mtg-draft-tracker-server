@@ -3,16 +3,19 @@ extends layout
 block content
   main
     section
-      h1 Login Page
-      p.lead Say something worthwhile here.
-      br
-      form(role='form', action="/login", method="post")
-        .form-row
-          label(for='email') Email address:
-          input(type='text', name="email", placeholder='Email Address')
-        .form-row
-          label(for='password') Passwrord:
-          input(type='password', name="password", placeholder='Password')
-        button(type='submit') Submit
-        a(href='/')
-          button(type="button") Cancel
+      .container-fluid
+        .row
+          h1 Login Page
+          p.lead Say something worthwhile here.
+        .row
+          form(role='form', action="/login", method="post")
+            .row
+              label.form-icon(for='email')
+                i.ms.ms-planeswalker.ms-2x
+              input(type='text', name="email", placeholder='Email Address')
+            .row
+              label.form-icon(for='password')
+                i.ss.ss-usg.ss-2x
+              input(type='password', name="password", placeholder='Password')
+            .row
+              button.btn(type='submit') Submit

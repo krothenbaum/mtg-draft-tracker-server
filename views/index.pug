@@ -11,12 +11,21 @@ block content
 				i.ms.ms-b.ms-cost.ms-2x.slideUp
 				i.ms.ms-r.ms-cost.ms-2x.slideUp
 				i.ms.ms-g.ms-cost.ms-2x.slideUp
-			.row
-				a(href='/register')
-					button.btn sign up
-			.row
-				a(href='/login')
-					button.btn log in
+			if (!user)
+				.row
+					a(href='/register')
+						button.btn sign up
+				.row
+					a(href='/login')
+						button.btn log in
+			if (user)
+				.row
+					a(href='/Dashboard')
+						button.btn dashboard
+				.row
+					a(href='/add-draft')
+						button.btn add draft
+
 		section.scroll-section(id='section-one')
 			h3 Enter your draft results
 			p Quickly enter your draft results from any device.
