@@ -50,6 +50,11 @@ router.get('/add-draft', function(req, res) {
     res.render('add-draft', { title: 'Add Draft', user : req.user });
 });
 
+// router.get('/edit-draft', function(req, res) {
+//   console.log(req.user);
+//     res.render('edit-draft', { title: 'Add Draft', user : req.user, draft: req.body.draftid });
+// });
+
 router.get('/ping', function(req, res){
     res.status(200).send("pong!");
 });
@@ -114,13 +119,24 @@ router.post('/user/draft/delete', (req, res) => {
     });
 });
 
-//get draft to edit
-router.get('/edit-draft', (req, res) => {
+//save edited draft
+router.post('/user/edit/draft', (req, res) => {
+  // console.log(req.draftid)
+  // let draft = "{drafts._id: ObjectId("+req.draftid+")}";
+  // let draft2 = ()
+  console.log(req.user.id);
+  console.log(req.body.draftid);
+
   User
-   .findById(req.body.userid)
+  // .find({drafts: {$elemMatch: {_id: req.body.draftid}}})
+   .update({"_id" : req.user.id, "drafts._id" : req.body.draftid},{$set : {"drafts.$.sets" : 'fjsdklfjs'}})
+   // .find({'_id': req.user.id}, {'drafts': {'$elemMatch': {'_id': req.body.draftid}}})
    .exec()
-   .then(user => {
-      // render('edit-draft', { title: 'Add Draft', user : req.draft })
+   .then(draft => {
+      
+      console.log(draft);
+      console.log(draft.drafts);
+      // render('edit-draft', { title: 'Add Draft', draft : req.draft })
    })
    .catch(err => {
     console.error(err);
@@ -128,6 +144,19 @@ router.get('/edit-draft', (req, res) => {
    })
 });
 
+router.post('/edit-draft', (req, res) => {
+  //query for draft
+  User
+    .find({drafts: {$elemMatch: {_id: req.body.draftid}}}, {'drafts.$._id': 1})
+    .exec()
+    .then(draft => {
+      console.dir(draft);
+      // console.log(draft.drafts._id);
+      // console.log(draft.drafts.matches);
+      res.render('edit-draft', { title: 'Edit Draft', user : req.user, draft: req.body.draftid });
+    });
+  
+});
 
 //update draft record
 router.post('/user/draft/edit', (req, res) => {

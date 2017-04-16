@@ -55,9 +55,10 @@ block content
 									form(role='form', action='/edit-draft', method='POST')
 										input(type='hidden', value= user.id, name='userid')
 										input(type='hidden', value= draft.id, name='draftid')
-										button Edit
+										button(type='submit') Edit
 								.draft-cell
 									form(role='form', action='/user/draft/delete', method='POST')
+										//remove userid, use session data
 										input(type='hidden', value= user.id, name='userid')
 										input(type='hidden', value= draft.id, name='draftid')
 										button(type='submit') Delete

@@ -1,0 +1,85 @@
+extends layout
+
+block content
+	main
+		section
+			.container-fluid
+				.row
+					h1 Edit Draft
+					p= user.id
+					p= draft
+					form(action='/user/edit/draft', method='POST')
+						.row.align-left
+							label.draft-form-label(for='date') Date:
+							input.draft-form-input(type='date', name='date')
+						.row.align-left
+							label.draft-form-label(for='sets') Sets:
+							select.draft-form-input(name='sets', id='sets')
+								option(value='AER-KLD') AER-KLD
+								option(value='KLD') KLD
+								option(value='MM3') MM3
+								option(value='EMN-SOI') EMN-SOI
+								option(value='SOI') SOI
+						.row.align-left
+							label.draft-form-label(for='format') Format:
+							select.draft-form-input(name='format', id='format')
+								option(value='Swiss League') Swiss League
+								option(value='Competitive League') Competitive League
+								option(value='Friendly League') Friendly League
+						.row.align-left
+							label.draft-form-label(for='colorsPlayed') Colors:
+							select.draft-form-input(name='colorsPlayed', id='colorsPlayed')
+								option(value='White Blue') White Blue
+								option(value='Blue Black') Blue Black
+								option(value='Black Red') Black Red
+								option(value='Red Green') Red Green
+								option(value='Green White') Green White
+								option(value='White Black') White Black
+								option(value='Blue Red') Blue Red
+								option(value='Black Green') Black Green
+								option(value='Red White') Red White
+								option(value='Green Blue') Green Blue
+						.row.align-left
+							label.draft-form-label.match-label(for='Match 1') Match 1:
+							input(type='hidden',name='matches[0][matchName]', value='match1')
+						.row.align-left
+							label(for='gamesWon') Games Won:
+							select.draft-form-input.games-select(name='matches[0][gamesWon]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+							label(for='gamesLost') Games Lost:
+							select.draft-form-input.games-select(name='matches[0][gamesLost]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+						.row.align-left
+							label.draft-form-label.match-label(for='Match 2') Match 2:
+							input(type='hidden',name='matches[1][matchName]', value='match2')
+						.row.align-left
+							label(for='gamesWon') Games Won:
+							select.draft-form-input.games-select(name='matches[1][gamesWon]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+							label(for='gamesLost') Games Lost:
+							select.draft-form-input.games-select(name='matches[1][gamesLost]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+						.row.align-left
+							label.draft-form-label.match-label(for='Match 3') Match 3:
+							input(type='hidden',name='matches[2][matchName]', value='match3')
+						.row.align-left
+							label(for='gamesWon') Games Won:
+							select.draft-form-input.games-select(name='matches[2][gamesWon]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+							label(for='gamesLost') Games Lost:
+							select.draft-form-input.games-select(name='matches[2][gamesLost]')
+								option(value='0' selected='selected') 0
+								option(value='1') 1
+								option(value='2') 2
+						.row
+							button.btn(type='submit') Submit
