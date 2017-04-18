@@ -63,7 +63,7 @@ function generateResult() {
 function generateMatches() {
 	let matches = [];
 	for (let i = 0; i<3; i++) {
-		const numWon Math.floor(Math.random() * 3)
+		const numWon = Math.floor(Math.random() * 3)
 		const match = {
 			matchName: `match${i+1}`,
 			matchWon: generateResult(),
