@@ -6,80 +6,80 @@ block content
 			.container-fluid
 				.row
 					h1 Edit Draft
-					p= user.id
 					p= draft
-					form(action='/user/edit/draft', method='POST')
+					form(action='/user/edit/update', method='POST')
+						input(type='hidden', name='draftId', value=draft._id)
 						.row.align-left
 							label.draft-form-label(for='date') Date:
-							input.draft-form-input(type='date', name='date')
+							input.draft-form-input(type='date', name='date', value=moment(draft.date).format("YYYY-MM-DD"))
 						.row.align-left
 							label.draft-form-label(for='sets') Sets:
 							select.draft-form-input(name='sets', id='sets')
-								option(value='AER-KLD') AER-KLD
-								option(value='KLD') KLD
-								option(value='MM3') MM3
-								option(value='EMN-SOI') EMN-SOI
-								option(value='SOI') SOI
+								option(value='AER-KLD', selected= draft.sets == 'AER-KLD') AER-KLD
+								option(value='KLD', selected= draft.sets == 'KLD') KLD
+								option(value='MM3', selected= draft.sets == 'MM3') MM3
+								option(value='EMN-SOI', selected= draft.sets == 'EMN-SOI') EMN-SOI
+								option(value='SOI', selected= draft.sets == 'SOI') SOI
 						.row.align-left
 							label.draft-form-label(for='format') Format:
 							select.draft-form-input(name='format', id='format')
-								option(value='Swiss League') Swiss League
-								option(value='Competitive League') Competitive League
-								option(value='Friendly League') Friendly League
+								option(value='Swiss League', selected= draft.format == 'Swiss League') Swiss League
+								option(value='Competitive League', selected= draft.format == 'Competitive League') Competitive League
+								option(value='Friendly League', selected= draft.format == 'Friendly League') Friendly League
 						.row.align-left
 							label.draft-form-label(for='colorsPlayed') Colors:
 							select.draft-form-input(name='colorsPlayed', id='colorsPlayed')
-								option(value='White Blue') White Blue
-								option(value='Blue Black') Blue Black
-								option(value='Black Red') Black Red
-								option(value='Red Green') Red Green
-								option(value='Green White') Green White
-								option(value='White Black') White Black
-								option(value='Blue Red') Blue Red
-								option(value='Black Green') Black Green
-								option(value='Red White') Red White
-								option(value='Green Blue') Green Blue
+								option(value='White Blue', selected= draft.colorsPlayed == 'White Blue') White Blue
+								option(value='Blue Black', selected= draft.colorsPlayed == 'Blue Black') Blue Black
+								option(value='Black Red', selected= draft.colorsPlayed == 'Black Red') Black Red
+								option(value='Red Green', selected= draft.colorsPlayed == 'Red Green') Red Green
+								option(value='Green White', selected= draft.colorsPlayed == 'Green White') Green White
+								option(value='White Black', selected= draft.colorsPlayed == 'White Black') White Black
+								option(value='Blue Red', selected= draft.colorsPlayed == 'Blue Red') Blue Red
+								option(value='Black Green', selected= draft.colorsPlayed == 'Black Green') Black Green
+								option(value='Red White', selected= draft.colorsPlayed == 'Red White') Red White
+								option(value='Green Blue', selected= draft.colorsPlayed == 'Green Blue') Green Blue
 						.row.align-left
 							label.draft-form-label.match-label(for='Match 1') Match 1:
 							input(type='hidden',name='matches[0][matchName]', value='match1')
 						.row.align-left
 							label(for='gamesWon') Games Won:
 							select.draft-form-input.games-select(name='matches[0][gamesWon]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[0].gamesWon == 0) 0
+								option(value='1', selected= draft.matches[0].gamesWon == 1) 1
+								option(value='2', selected= draft.matches[0].gamesWon == 2) 2
 							label(for='gamesLost') Games Lost:
 							select.draft-form-input.games-select(name='matches[0][gamesLost]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[0].gamesLost == 0) 0
+								option(value='1', selected= draft.matches[0].gamesLost == 1) 1
+								option(value='2', selected= draft.matches[0].gamesLost == 2) 2
 						.row.align-left
 							label.draft-form-label.match-label(for='Match 2') Match 2:
 							input(type='hidden',name='matches[1][matchName]', value='match2')
 						.row.align-left
 							label(for='gamesWon') Games Won:
 							select.draft-form-input.games-select(name='matches[1][gamesWon]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[1].gamesWon == 0) 0
+								option(value='1', selected= draft.matches[1].gamesWon == 1) 1
+								option(value='2', selected= draft.matches[1].gamesWon == 2) 2
 							label(for='gamesLost') Games Lost:
 							select.draft-form-input.games-select(name='matches[1][gamesLost]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[1].gamesLost == 0) 0
+								option(value='1', selected= draft.matches[1].gamesLost == 1) 1
+								option(value='2', selected= draft.matches[1].gamesLost == 2) 2
 						.row.align-left
 							label.draft-form-label.match-label(for='Match 3') Match 3:
 							input(type='hidden',name='matches[2][matchName]', value='match3')
 						.row.align-left
 							label(for='gamesWon') Games Won:
 							select.draft-form-input.games-select(name='matches[2][gamesWon]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[2].gamesWon == 0) 0
+								option(value='1', selected= draft.matches[2].gamesWon == 1) 1
+								option(value='2', selected= draft.matches[2].gamesWon == 2) 2
 							label(for='gamesLost') Games Lost:
 							select.draft-form-input.games-select(name='matches[2][gamesLost]')
-								option(value='0' selected='selected') 0
-								option(value='1') 1
-								option(value='2') 2
+								option(value='0', selected= draft.matches[2].gamesLost == 0) 0
+								option(value='1', selected= draft.matches[2].gamesLost == 1) 1
+								option(value='2', selected= draft.matches[2].gamesLost == 2) 2
 						.row
 							button.btn(type='submit') Submit

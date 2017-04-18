@@ -52,13 +52,12 @@ block content
 											i.ms.ms-gu.ms-split.ms-cost
 								.draft-cell= matchesWon(draft.matches)
 								.draft-cell
-									form(role='form', action='/edit-draft', method='POST')
-										input(type='hidden', value= user.id, name='userid')
+									//- a(href=`edit/${draft.id}`)
+									//- 	button(type='submit') Edit
+									form(role='form', action='/user/draft/edit', method='POST')
 										input(type='hidden', value= draft.id, name='draftid')
 										button(type='submit') Edit
 								.draft-cell
 									form(role='form', action='/user/draft/delete', method='POST')
-										//remove userid, use session data
-										input(type='hidden', value= user.id, name='userid')
 										input(type='hidden', value= draft.id, name='draftid')
 										button(type='submit') Delete
