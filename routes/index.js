@@ -20,9 +20,9 @@ router.post('/register', (req, res) => {
 
     passport.authenticate('local')(req, res, () => {
       req.session.save((err) => {
-        if (err) {
-          return next(err);
-        }
+        // if (err) {
+        //   return next(err);
+        // }
         res.redirect('/dashboard');
       });      
     });
@@ -60,9 +60,9 @@ router.get('/ping', function(req, res){
 });
 
 router.get('/dashboard', (req, res) => {
-    if(!req.user) {
-        return res.redirect('/login');
-    }
+    // if(!req.user) {
+    //     return res.redirect('/login');
+    // }
     res.render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
@@ -158,12 +158,26 @@ router.post('/user/edit/update', (req, res) => {
 });
 
 //get draft to edit and pass draft to edit draft page
-router.post('/user/draft/edit', (req, res) => {
+// router.post('/user/draft/edit', (req, res) => {
+//   User
+//     .find({_id : req.user.id},{drafts:{ $elemMatch: {id:req.body.draftId} }})
+//     .exec()
+//     .then(results => {
+//       res.render('edit-draft', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).redirect('/dashboard');
+//     });
+// });
+
+router.get('/edit/:draftId', (req, res) => {
   User
-    .find({_id : req.user.id},{drafts:{ $elemMatch: {id:req.body.draftId} }})
+    .find({_id : req.user.id},{drafts:{ $elemMatch: {_id:req.params.draftId} }})
     .exec()
     .then(results => {
-      res.render('edit-draft', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
+      console.log(results[0].drafts[0]);
+      res.render('edit', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
     })
     .catch(err => {
       console.error(err);

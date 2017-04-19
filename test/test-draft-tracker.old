@@ -56,21 +56,13 @@ function generateColorsPlayed() {
 	return magicColors[Math.floor(Math.random() * magicColors.length)];
 }
 
-function generateResult(numWon) {
-	if(numWon === 2) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
 function generateMatches() {
 	let matches = [];
 	for (let i = 0; i<3; i++) {
 		const numWon = Math.floor(Math.random() * 3)
 		const match = {
 			matchName: `match${i+1}`,
-			matchWon: generateResult(numWon),
+			matchWon: generateResult(),
 			gamesWon: numWon,
 			gamesLost: 2-numWon
 		}
@@ -156,22 +148,6 @@ describe('Draft Tracker API resource', function() {
    	});
 		});
 	});
-
-	describe('Register User Endpoint',() => {
-		it('should redirect to dashboard', () => {
-			return chai.request(app)
-	   .post('/register')
-    .set('Token', 'text/plain')
-    .set('content-type', 'application/x-www-form-urlencoded')
-    .type('form')
-    .send('email=test@test.com')
-    .send('password=abc123')
-    .then(res => {
-    	res.should.have.status(200);
-     res.should.redirectTo('http://localhost:8080/dashboard');
-    });
-		})
-	})
 });
 
 	// 	it('should return posts with the correct fields', function() {
