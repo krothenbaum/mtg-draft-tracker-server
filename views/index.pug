@@ -2,35 +2,37 @@ extends layout
 
 block content
 	main
-		section.scroll-section
-			h1 Magic: The Gathering Draft Tracker
-			h2 Tirelessly track your draft results
-			.mana-symbols
-				i.ms.ms-w.ms-cost.ms-2x.slideUp
-				i.ms.ms-u.ms-cost.ms-2x.slideUp
-				i.ms.ms-b.ms-cost.ms-2x.slideUp
-				i.ms.ms-r.ms-cost.ms-2x.slideUp
-				i.ms.ms-g.ms-cost.ms-2x.slideUp
-			if (!user)
-				.row
-					a(href='/register')
-						button.btn sign up
-				.row
-					a(href='/login')
-						button.btn log in
-			if (user)
-				.row
-					a(href='/Dashboard')
-						button.btn dashboard
-				.row
-					a(href='/add-draft')
-						button.btn add draft
+		.container-fluid
+			.row
+				section.scroll-section
+					.jumbotron.col-6
+						h1 Magic: The Gathering Draft Tracker
+						h2 Tirelessly track your draft results
+						img.slideUp(src='./images/draftTrackerLogo.svg')
+						if (!user)
+							.row
+								a(href='/register')
+									button.btn sign up
+							.row
+								a(href='/login')
+									button.btn log in
+						else
+							.row
+								a(href='/Dashboard')
+									button.btn dashboard
+							.row
+								a(href='/add-draft')
+									button.btn add draft
+					.hand.col-6.hidden
+						img.card-one.fanCardOne(src='./images/tireless-tracker.jpg')
+						img.card-two(src='./images/ainok-tracker.jpg')
+						img.card-three.fanCardThree(src='./images/lowland-tracker.jpg')
 
-		section.scroll-section(id='section-one')
-			h3 Enter your draft results
-			p Quickly enter your draft results from any device.
-			img(src='./images/tireless-tracker.jpg')
-		section.scroll-section(id='section-two')
-			h3 Track your metrics.
-			p Track your match and game win rate across sets, formats, and colors played.
-			img(src='./images/ulvenwald-tracker.jpg')
+			section.scroll-section(id='section-one')
+				h3 Enter your draft results
+				p Quickly enter your draft results from any device.
+				img.slide(src='./images/tracker.jpg')
+			section.scroll-section(id='section-two')
+				h3 Track your metrics.
+				p Track your match and game win rate across sets, formats, and colors played.
+				img.slide(src='./images/ulvenwald-tracker.jpg')

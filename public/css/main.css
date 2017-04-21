@@ -1,280 +1,254 @@
-@import url("animations.css");
+@import url('animations.css');
+@import url('grid.css');
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppin"s, sans-serif;
-  font-size: 13px;
+	font-family: 'Poppins', sans-serif;
+	font-size: 13px;
 }
 
 section {
-  border: none;
+	border: none;
 }
 
 .scroll-section {
-  min-height: 480px;
-  height: 100vH;  
-}
-
-section img {
-/*  position: relative;
-  left: -500px;*/
+	min-height: 480px;
+	height: 100vH;  
 }
 
 h1 {
-  font-size: 3em;
+	font-size: 3em;
 }
 
 h3 {
-  font-size: 2.5em;
+	font-size: 2.5em;
 }
 
 p {
-  font-size: 1.5em;
+	font-size: 1.5em;
+}
+
+.hidden {
+	display: none;
 }
 
 .btn {
-  width: 125px;
-  background: #FFF;
-  padding: 12px 17px;
-  margin-top: 25px;
-  border: 2px solid #0e68ab;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  display: inline-block;
-  text-align: center;
-  cursor: pointer;
-  box-shadow: inset 0 0 0 0 #0e68ab;
-  -webkit-transition: all ease 0.8s;
-  -moz-transition: all ease 0.8s;
-  transition: all ease 0.8s;
+	width: 125px;
+	background: #FFF;
+	padding: 12px 17px;
+	margin-top: 25px;
+	border: 2px solid #0e68ab;
+	font-size: 14px;
+	font-weight: bold;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 0 #0e68ab;
+	-webkit-transition: all ease 0.8s;
+	-moz-transition: all ease 0.8s;
+	transition: all ease 0.8s;
 }
 
 .btn:hover {
-  box-shadow: inset 200px 0 0 0 #0e68ab;
-  color: #FFF;
+	box-shadow: inset 200px 0 0 0 #0e68ab;
+	color: #FFF;
 }
 
 input[type='text'], input[type='password'], input[type='date'], select {
-  height: 35px;
-  width: 200px;
-  border-left: none;
-  border: 1px solid rgb(196,211,202);
-  padding-left: 8px;
-  margin-top: 8px;
+	height: 42px;
+	width: 200px;
+	border-left: none;
+	border: 1px solid rgb(196,211,202);
+	padding-left: 8px;
+	margin-top: 8px;
 }
 
 input[type='text']:focus, input[type='password']:focus, input[type='date']:focus, select:focus {
-  outline: none !important;
-  border-color: rgb(0,115,62);
+	outline: none !important;
+	border-color: rgb(0,115,62);
 }
 
 .align-left {
-  text-align: left;
+	text-align: left;
 }
 
 .games-select {
-  margin-right: 16px;
-  width: 40px;
+	margin-right: 16px;
+	width: 40px;
 }
 
 .draft-form-label {
-  display: inline-block;
-  margin-left: 15px;
-  width: 55px;
+	display: inline-block;
+	margin-left: 15px;
+	width: 55px;
 }
 
 .match-label {
-  margin-top: 8px;
-  font-weight: 700;
+	margin-top: 8px;
+	font-weight: 700;
 }
 
 .draft-form-input {
-  margin-left: 8px;
-  margin-right: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
 }
 
 .form-icon {
-  padding-top: 10px;
-  padding-bottom: 11px;
-  padding-left: 8px;
-  padding-right: 8px;
-  width: 40px;
-  background-color: rgb(196,211,202);
+	padding-top: 10px;
+	padding-bottom: 11px;
+	padding-left: 8px;
+	padding-right: 8px;
+	width: 40px;
+	background-color: rgb(196,211,202);
 }
 
 .ms, .ss {
-  margin: 0;
+	margin: 0;
 }
 
 .ms-planeswalker {
-  margin-left: 1.5px;
-  margin-right: 1.5px;
+	margin-left: 1.5px;
+	margin-right: 1.5px;
 }
 
-.container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.row {
-/*  margin-right: -15px;
-  margin-left: -15px;*/
-}
-
-.row::before,
-.row::after {
-  display: table;
-  content: '';
-}
-
-.row::after {
-  clear: both;
-}
-
-.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-  float: left;
-  position: relative;
-  min-height: 1px;
-  padding-right: 15px;
-  padding-left: 15px;
-}
-
-.col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
-  width: 100%;
-}
-
-.col-6 {
-  width: 50%;
-}
-
-.col-5 {
-  width: 41.66666667%;
-}
-
-.col-4 {
-  width: 33.33333333%
-}
-
-.col-3 {
-  width: 25%;
-}
-
-.col-2 {
-  width: 16.66666667%;
-}
-
-.col-1 {
-  width: 8.33333333%;
-}
 
 .inline-block {
-  display: inline-block;
+	display: inline-block;
 }
 
 .pie-chart {
-  border: 1px solid black;
-  width: 150px;
-  height: 150px;
-  margin: 5px;
+	border: 1px solid black;
+	width: 150px;
+	height: 150px;
+	margin: 5px;
 }
 
 .draft-stats {
-  border: 1px solid black;
-  width: 150px;
-  height: 150px;
-  margin: 5px;
+	border: 1px solid black;
+	width: 150px;
+	height: 150px;
+	margin: 5px;
 }
 
 section#drafts {
-  padding: 0;
-  border: none;
+	padding: 0;
+	border: none;
 }
 
 .drafts-table {
-  display: table;
-  width: 100%
+	display: table;
+	width: 100%
 }
 
 .drafts-rows {
-  display: table-row-group;
+	display: table-row-group;
 }
 
 .draft-row {
-  display: table-row;
-
+	display: table-row;
 }
 
 .draft-heading-cell, .draft-cell {
-  display: table-cell;
-  border-bottom: 1px solid black;
-  padding-top: 4px;
-  padding-bottom: 4px;
+	display: table-cell;
+	border-bottom: 1px solid black;
+	padding: 5px;
+	/*padding-top: 4px;
+	padding-bottom: 4px;*/
 }
 
 .draft-heading-cell {
-  font-weight: 700;
+	font-weight: 700;
 }
 
 .draft-cell {
-  font-size: 12px;
+	font-size: 12px;
 }
 
 .draft-cell i {
-  font-size: 14px;
+	font-size: 14px;
 }
 
 /*form {
-  margin-left: 25%;
-  text-align: left;
+	margin-left: 25%;
+	text-align: left;
 }*/
 
 /*.form-row {
-  display: block;
-  margin-bottom: 4px;
+	display: block;
+	margin-bottom: 4px;
 }*/
 
 .mana-symbols {
-  padding-top: 50px;
-  min-height: 100px;
+	padding-top: 50px;
+	min-height: 100px;
 }
 
 i {
-  margin: 10px;
+	margin: 10px;
 }
 
 .ms-w {
-  position: relative;
-  top: 10px;
+	position: relative;
+	top: 10px;
 }
 
 .ms-u {
-  position: relative;
-  top: -15px;
+	position: relative;
+	top: -15px;
 }
 
 .ms-b {
-  position: relative;
-  top: 5px;
+	position: relative;
+	top: 5px;
 }
 
 .ms-r {
-  position: relative;
-  top: -35px;
+	position: relative;
+	top: -35px;
 }
 
 .ms-g {
-  position: relative;
-  top: -20px;
+	position: relative;
+	top: -20px;
 }
 
 img {
-  width: 265px;
-  margin-top: 24px;
+	width: 265px;
+	margin-top: 24px;
+}
+
+.card-one {
+	position: absolute;
+	left: 160px;
+	top: 0;
+	z-index: 2;
+}
+
+.card-two {
+	position: absolute;
+	left: 160px;
+	top: 0;
+	z-index: 1;
+}
+
+.card-three {
+	position: absolute;
+  left: 160px;
+  top: 0;
+	z-index: 0;
+}
+
+@media (min-width: 768px) {
+	.col-6 {
+		width: 50%;
+	}
+
+	.hidden {
+		display: initial;
+	}
 }
