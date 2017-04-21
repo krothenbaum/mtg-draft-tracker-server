@@ -49,3 +49,37 @@
 .fadeIn {
 	animation: fadeIn 1s .5s;
 }
+
+@keyframes fanCardOne {
+/*	0% {
+		transform: rotate(0deg);
+  	transform-origin: bottom right;		
+	}*/
+
+	100% {
+		transform: rotate(10deg);
+  	transform-origin: bottom center;
+	}
+}
+
+.fanCardOne {
+	animation: 1s ease-in-out .5s 1 fanCardOne;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fanCardThree {
+/*	0% {
+		transform: rotate(0deg);
+  	transform-origin: bottom right;		
+	}*/
+
+	100% {
+		transform: rotate(-10deg);
+  	transform-origin: bottom center;
+	}
+}
+
+.fanCardThree {
+	animation: 1s ease-out .5s 1 fanCardThree;
+	animation-fill-mode: forwards;
+}

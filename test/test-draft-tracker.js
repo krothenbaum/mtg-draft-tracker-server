@@ -2,10 +2,12 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 // this makes the should syntax available throughout
 // this module
 const should = chai.should();
+const expect = chai.expect();
 
 const {User} = require('../models');
 const {app, runServer, closeServer} = require('../server');
@@ -14,32 +16,32 @@ const {TEST_DATABASE_URL} = require('../config');
 chai.use(chaiHttp);
 
 //Generates 10 blog posts
-function seedUsers() {
-	console.info('seeding users');
-	const seedUsers = [];
+// function seedUsers() {
+// 	console.info('seeding users');
+// 	const seedUsers = [];
 
-	for (let i = 1; i <= 10; i++) {
-		seedUsers.push(generateUser());
-	}
+// 	for (let i = 1; i <= 10; i++) {
+// 		seedUsers.push(generateUser());
+// 	}
 
-	return User.insertMany(seedUsers);
-}
+// 	return User.insertMany(seedUsers);
+// }
 
 //generate post author
-function generateUserName() {
-	return {
-		firstName: faker.name.firstName(),
-		lastName: faker.name.lastName()
-	}
-}
+// function generateUserName() {
+// 	return {
+// 		firstName: faker.name.firstName(),
+// 		lastName: faker.name.lastName()
+// 	}
+// }
 
-function generateEmail() {
-	return faker.internet.email();
-}
+// function generateEmail() {
+// 	return faker.internet.email();
+// }
 
-function generatePassword() {
-	return faker.address.city();
-}
+// function generatePassword() {
+// 	return faker.address.city();
+// }
 
 function generateSets() {
 	const magicSets = ['AER-KLD','KLD','EMN-SOI','SOI','MM3'];
@@ -97,12 +99,13 @@ function generateDrafts() {
 
 //generate a User
 function generateUser() {
-	return {
-		name: generateUserName(),
-		username: generateEmail(),
-		password: generatePassword(),
+	const user = new User ({
+		username: 'test@test.com',
+		password: 'test',
 		drafts: generateDrafts()
-	}
+	});
+
+	return user;
 }
 
 // this function deletes the entire database.
@@ -117,61 +120,133 @@ function tearDownDb() {
 describe('Draft Tracker API resource', function() {
 
 	before(function() {
-		return runServer(TEST_DATABASE_URL);
-	});
-
-	beforeEach(function() {
-		return seedUsers();
-	});
-
-	afterEach(function() {
-		return tearDownDb();
-	});
-
-	after(function() {
-		return closeServer();
-	});
-
-	describe('GET endpoint', function() {
-		it('should return all users', function() {
-	 // strategy:
-   //    1. get back all posts returned by by GET request to `/posts`
-   //    2. prove res has right status, data type
-   //    3. prove the number of posts we got back is equal to number
-   //       in db.
-   //
-   // need to have access to mutate and access `res` across
-   // `.then()` calls below, so declare it here so can modify in place
-   let res;
-   return chai.request(app)
-   	.get('/users')
-   	.then(function(_res) {
-   		res = _res;
-   		res.should.have.status(200);
-   		res.body.should.have.length.of.at.least(1);
-   		return User.count();
-   	})
-   	.then(function(count) {
-   		res.body.should.have.length.of(count);
-   	});
+		runServer(TEST_DATABASE_URL);
+		const user = generateUser();
+		user.save();
+		user.authenticate({username: 'test@test.com', password: 'test'}, (res, req) => {
+			return;
 		});
 	});
 
+	// beforeEach(function() {
+		
+	// });
+
+	// afterEach(function() {
+		
+	// });
+
+	after(function() {
+		tearDownDb();
+		return closeServer();
+	});
+
+	describe('find user', () => {
+		it('should have username test@test.com', () => {
+			User
+				.findOne({username: 'test@test.com'}, (err, user) => {
+					user.username.should.eql('test@test.com');
+					console.log(user);
+					done();
+				})
+		})
+	})
+
+	describe('GET dashboard endpoint', () => {
+		it('should have status 200', () => {
+			return chai.request(app)
+				.get('/dashboard')
+				.then(res => {
+					res.should.have.status(200);
+				});
+		});
+	});
+
+	// describe('GET endpoint', function() {
+	// 	it('should return all users', function() {
+	//  // strategy:
+ //   //    1. get back all posts returned by by GET request to `/posts`
+ //   //    2. prove res has right status, data type
+ //   //    3. prove the number of posts we got back is equal to number
+ //   //       in db.
+ //   //
+ //   // need to have access to mutate and access `res` across
+ //   // `.then()` calls below, so declare it here so can modify in place
+ //   let res;
+ //   return chai.request(app)
+ //   	.get('/users')
+ //   	.then(function(_res) {
+ //   		res = _res;
+ //   		res.should.have.status(200);
+ //   		res.body.should.have.length.of.at.least(1);
+ //   		return User.count();
+ //   	})
+ //   	.then(function(count) {
+ //   		res.body.should.have.length.of(count);
+ //   	});
+	// 	});
+	// });
+
 	describe('Register User Endpoint',() => {
-		it('should redirect to dashboard', () => {
+		it('should redirect to dashboard after user registered', () => {
 			return chai.request(app)
 	   .post('/register')
     .set('Token', 'text/plain')
     .set('content-type', 'application/x-www-form-urlencoded')
     .type('form')
-    .send('email=test@test.com')
+    .send('email=newuser@test.com')
     .send('password=abc123')
-    .then(res => {
+    .end(res => {
     	res.should.have.status(200);
-     res.should.redirectTo('http://localhost:8080/dashboard');
+     expect(res).to.redirectTo('/dashboard');
+     done();
     });
-		})
-	})
+		});
+	});
+
+	describe('Login Endpoint', () => {
+		it('should redirect to dashboard on successful login', () => {
+			return chai.request(app)
+	   .post('/login')
+    .set('Token', 'text/plain')
+    .set('content-type', 'application/x-www-form-urlencoded')
+    .type('form')
+    .send('email=newuser@test.com')
+    .send('password=abc123')
+    .end(res => {
+    	res.should.have.status(200);
+     expect(res).to.redirectTo('/dashboard');
+     done();			
+				});
+		});
+	});
+
+	describe('Add Draft Endpoint', () => {
+		it('should add a draft to user', () => {
+			return chai.request(app)
+				.post('/user/add/draft')
+				.set('Token', 'text/plain')
+    .set('content-type', 'application/x-www-form-urlencoded')
+    .type('form')
+    .send('date=2017-04-09T00:02:08.197Z')
+    .send('sets=AER-KLD')
+    .send('format=Swiss League')
+    .send('colorsPlayed=White Blue')
+    .send('matches[0][matchName]=match1')
+    .send('matches[0][gamesWon]=2')
+    .send('matches[0][gamesLost]=0')
+    .send('matches[1][matchName]=match2')
+    .send('matches[1][gamesWon]=2')
+    .send('matches[1][gamesLost]=0')
+    .send('matches[2][matchName]=match3')
+    .send('matches[2][gamesWon]=2')
+    .send('matches[2][gamesLost]=0')
+    .end(res => {
+    	res.should.have.status(201);
+    	expect(res).to.redirectTo('/dashboard');
+    });
+		});
+	});
 });
 
 	// 	it('should return posts with the correct fields', function() {

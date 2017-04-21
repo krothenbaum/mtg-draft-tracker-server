@@ -3,10 +3,10 @@ $(document).ready(function () {
 		section: '.scroll-section',
 		scrollbars: false,
 		before: function(index,panel) {
-			$(panel[index]).find('img').addClass('slideLefToRight');
+			$(panel[index]).find('img.slide').addClass('slideLefToRight');
 		},
 		after: function(index,panel) {
-			$(panel[index]).find('img').removeClass('slideLefToRight');
+			$(panel[index]).find('img.slide').removeClass('slideLefToRight');
 		},
 	});
 })

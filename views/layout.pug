@@ -1,42 +1,43 @@
 doctype html
 html
-  head
-    title= title
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css')  
-    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins')
-    link(rel='stylesheet', href='/css/mana.css')
-    link(rel='stylesheet', href='/css/keyrune.css')
-    link(rel='stylesheet', href='/css/styles.css')
-    link(rel='stylesheet', href='/css/main.css')
-    script(src='js/responsive-nav.js')
-  body
-    if (error && error.length > 0)
-      br
-      h4.error-msg= error
-      br
-    header
-      a.logo(href='/', data-scroll) MTG Draft Tracker
-      nav.nav-collapse
-        if (!user)
-          ul
-            li.menu-item.active
-              a(href='/login', data-scroll) Login In
-            li.menu-item.active
-              a(href='/register', data-scroll) Create Account              
-        if (user)
-          ul
-            li.menu-item.active
-              a(href='/dashboard', data-scroll) Dashboard
-            li.menu-item
-              a(href='/add-draft', data-scroll) Add Draft
-            li.menu-item
-              a(href='logout', data-scroll) Log Out
-    block content
+	head
+		title= title
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css')  
+		link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Poppins')
+		link(rel='stylesheet', href='/css/mana.css')
+		link(rel='stylesheet', href='/css/keyrune.css')
+		link(rel='stylesheet', href='/css/dashboard.css')
+		link(rel='stylesheet', href='/css/styles.css')
+		link(rel='stylesheet', href='/css/main.css')
+		script(src='js/responsive-nav.js')
+	body
+		if (error && error.length > 0)
+			br
+			h4.error-msg= error
+			br
+		header
+			a.logo(href='/', data-scroll) MTG Draft Tracker
+			nav.nav-collapse
+				if (!user)
+					ul
+						li.menu-item.active
+							a(href='/login', data-scroll) Login In
+						li.menu-item.active
+							a(href='/register', data-scroll) Create Account              
+				if (user)
+					ul
+						li.menu-item.active
+							a(href='/dashboard', data-scroll) Dashboard
+						li.menu-item
+							a(href='/add-draft', data-scroll) Add Draft
+						li.menu-item
+							a(href='logout', data-scroll) Log Out
+		block content
 
-    script(src='/js/fastclick.js')
-    script(src='/js/scroll.js')
-    script(src='/js/fixed-responsive-nav.js')
-    script(src='https://code.jquery.com/jquery-3.2.1.min.js')
-    script(src='/js/jquery.scrollify.min.js')
-    script(src='/js/draft-tracker.js')
+		script(src='/js/fastclick.js')
+		script(src='/js/scroll.js')
+		script(src='/js/fixed-responsive-nav.js')
+		script(src='https://code.jquery.com/jquery-3.2.1.min.js')
+		script(src='/js/jquery.scrollify.min.js')
+		script(src='/js/draft-tracker.js')
