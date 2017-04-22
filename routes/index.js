@@ -120,6 +120,80 @@ router.post('/user/draft/delete', (req, res) => {
 });
 
 //update a draft record
+router.post('/user/edit', (req, res) => {
+  const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
+  for (let i=0; i<requiredFields.length; i++) {
+    const field = requiredFields[i];
+    if (!(field in req.body)) {
+      const message = `Missing \`${field}\` in request body`
+      console.error(message);
+      return res.status(400).send(message);
+    }
+  }
+
+  for(let i=0; i < req.body.matches.length; i++) {
+    const gamesWonInt = parseInt(req.body.matches[i].gamesWon);
+    const gamesLostInt = parseInt(req.body.matches[i].gamesLost);
+    if (gamesLostInt < gamesWonInt) {
+      req.body.matches[i].matchWon = true;
+    }
+    else {
+      req.body.matches[i].matchWon = false;
+    }
+  }
+
+	console.log('upup');
+	console.log(req.body)
+	console.log(req.body.draftId)
+	
+
+User.
+	update(
+		{'_id':req.user.id, 'drafts._id':req.body.draftId},
+		{ $set: 
+			{ 
+				'drafts.$.matches':req.body.matches,
+				'drafts.$.colorsPlayed':req.body.colorsPlayed,
+				'drafts.$.format':req.body.format,
+				'drafts.$.sets':req.body.sets
+			} 
+		}
+	
+	)    .exec()
+    .then(user => {
+	    console.log(user)
+      res.status(201).redirect('/dashboard');
+    })
+
+
+})
+
+//db.users.update({"_id" : ObjectId("58fb763fbf02ac42de0084b8"), 'drafts._id':ObjectId("58fb7647bf02ac42de0084b9")}, { $set: { 'drafts.$.matches': ['sup','o']} })
+
+
+//			{ 'drafts.$.matches':req.body.matches } 
+//
+
+/*
+  User
+    .findById(req.user.id)
+    .exec()
+    .then(user => {
+      user.drafts.pull(req.body.draftId);
+      user.drafts.push(req.body);
+      user.save();
+      res.status(201).redirect('/dashboard');
+    })
+   .catch(err => {
+    console.error(err);
+    res.status(500).redirect('/dashboard');
+   });
+});
+*/
+
+
+
+//update a draft record
 router.post('/user/edit/update', (req, res) => {
   const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
   for (let i=0; i<requiredFields.length; i++) {

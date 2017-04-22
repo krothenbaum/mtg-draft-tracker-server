@@ -6,7 +6,7 @@ block content
 			.container-fluid
 				.row
 					h1 Edit Draft
-					form(action='/user/edit/update', method='POST')
+					form(action='/user/edit', method='POST')
 						input(type='hidden', name='draftId', value=draft._id)
 						.row.align-left
 							label.draft-form-label(for='date') Date:
