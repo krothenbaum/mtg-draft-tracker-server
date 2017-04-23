@@ -3,6 +3,64 @@ const passport = require('passport');
 const {User} = require('../models');
 const router = express.Router();
 
+const handleAuth = (req, res, next) => {
+ if(!req.user) {
+  return res.status(202).redirect('/login');
+ }
+ else {
+  next();
+ }
+};
+
+const draftRequiredFields = (draft) => {
+	const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
+	for (let i=0; i<requiredFields.length; i++) {
+		const field = requiredFields[i];
+		if (!(field in draft)) {
+			const message = `Missing \`${field}\` in request body`
+			console.error(message);
+			return res.status(400).send(message);
+		}
+	}
+}
+
+const setMatchWon = (matches) => {
+	for(let i=0; i < matches.length; i++) {
+		const gamesWonInt = parseInt(matches[i].gamesWon);
+		const gamesLostInt = parseInt(matches[i].gamesLost);
+		if (gamesLostInt < gamesWonInt) {
+			matches[i].matchWon = true;
+		}
+		else {
+			matches[i].matchWon = false;
+		}
+	}
+	return matches;
+};
+
+const addDraft = (req, res) => {
+	draftRequiredFields(req.body);
+	req.body.matches = setMatchWon(req.body.matches);
+
+	User
+	.findById(req.user.id) //req.
+	.exec()
+	.then(user => {
+		user.drafts.push(req.body);
+		user.save();
+		res.status(201).redirect('/dashboard');
+	})
+	.catch(err => {
+		console.error(err);
+		res.status(500).json({error: 'Something went wrong'});
+	});
+};
+
+//add a draft
+router.use('/user/add/draft', handleAuth);
+
+router.post('/user/add/draft', addDraft);
+
 
 router.get('/', function (req, res) {
 		res.render('index', { user : req.user });
@@ -17,7 +75,7 @@ router.get('/login', function(req, res) {
 });
 
 router.post('/login', passport.authenticate('local'), function(req, res) {
-		res.redirect('/dashboard');
+		res.status(200).redirect('/dashboard');
 });
 
 router.get('/logout', function(req, res) {
@@ -64,42 +122,7 @@ router.post('/register', (req, res) => {
 	});
 });
 
-//add a draft
-router.post('/user/add/draft', (req, res) => {
-	const requiredFields = ['date','sets', 'format', 'colorsPlayed','matches'];
-	for (let i=0; i<requiredFields.length; i++) {
-		const field = requiredFields[i];
-		if (!(field in req.body)) {
-			const message = `Missing \`${field}\` in request body`
-			console.error(message);
-			return res.status(400).send(message);
-		}
-	}
 
-	for(let i=0; i < req.body.matches.length; i++) {
-		const gamesWonInt = parseInt(req.body.matches[i].gamesWon);
-		const gamesLostInt = parseInt(req.body.matches[i].gamesLost);
-		if (gamesLostInt < gamesWonInt) {
-			req.body.matches[i].matchWon = true;
-		}
-		else {
-			req.body.matches[i].matchWon = false;
-		}
-	}
-
-	User
-		.findById(req.user.id)
-		.exec()
-		.then(user => {
-			user.drafts.push(req.body);
-			user.save();
-			res.status(201).redirect('/dashboard');
-		})
-		.catch(err => {
-			console.error(err);
-			res.status(500).json({error: 'Something went wrong'});
-		});
-});
 
 //delete by draft id
 router.post('/user/draft/delete', (req, res) => {
