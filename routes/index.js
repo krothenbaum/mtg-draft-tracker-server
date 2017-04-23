@@ -5,10 +5,10 @@ const router = express.Router();
 
 const handleAuth = (req, res, next) => {
  if(!req.user) {
-  return res.status(202).redirect('/login');
+	return res.status(202).redirect('/login');
  }
  else {
-  next();
+	next();
  }
 };
 
@@ -100,9 +100,11 @@ router.get('/ping', function(req, res){
 
 router.get('/dashboard', (req, res) => {
 		if(!req.user) {
-				return res.redirect('/login');
+				return res.status(500).redirect('/login');
 		}
-		res.render('dashboard', {title: 'Dashboard', user: req.user});
+
+		constructChartData(req.user);
+		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
 router.post('/register', (req, res) => {
@@ -214,5 +216,41 @@ router.get('/users', (req, res) => {
 			res.status(500).json({error: 'something went terribly wrong'});
 		});
 });
+
+const constructChartData = (user) => {
+	console.log(user.drafts[0].colorsPlayed);
+	data = [
+	{
+		cat: 'White',
+		val: 0
+	},
+	{
+		cat: 'Blue',
+		val: 0
+	},
+	{
+		cat: 'Black',
+		val: 0
+	},
+	{
+		cat: 'Red',
+		val: 0
+	},
+	{
+		cat: 'Green',
+		val: 0
+	},]
+	user.drafts.forEach(draft => {
+		let colorArr = draft.colorsPlayed.split(' ');
+		colorArr.forEach(color => {
+			for(let i=0; i<data.length; i++) {
+				if(data[i].cat === color) {
+					data[i].val++;
+				}
+			}
+		});
+	});
+	console.log(data);
+};
 
 module.exports = router;
