@@ -29,29 +29,29 @@ function DonutCharts() {
 						return catNames;
 				}
 
-				var createLegend = function(catNames) {
-						var legends = charts.select('.legend')
-														.selectAll('g')
-																.data(catNames)
-														.enter().append('g')
-																.attr('transform', function(d, i) {
-																		return 'translate(' + (i * 150 + 50) + ', 10)';
-																});
+				// var createLegend = function(catNames) {
+				// 		var legends = charts.select('.legend')
+				// 										.selectAll('g')
+				// 												.data(catNames)
+				// 										.enter().append('g');
+				// 												// .attr('transform', function(d, i) {
+				// 												// 		return 'translate(' + (i * 150 + 50) + ', 10)';
+				// 												// });
 		
-						legends.append('circle')
-								.attr('class', 'legend-icon')
-								.attr('r', 6)
-								.style('fill', function(d, i) {
-										return color(i);
-								});
+				// 		legends.append('circle')
+				// 				.attr('class', 'legend-icon')
+				// 				.attr('r', 6)
+				// 				.style('fill', function(d, i) {
+				// 						return color(i);
+				// 				});
 		
-						legends.append('text')
-								.attr('dx', '1em')
-								.attr('dy', '.3em')
-								.text(function(d) {
-										return d;
-								});
-				}
+				// 		legends.append('text')
+				// 				.attr('dx', '1em')
+				// 				.attr('dy', '.3em')
+				// 				.text(function(d) {
+				// 						return d;
+				// 				});
+				// }
 
 				var createCenter = function(pie) {
 
@@ -237,11 +237,11 @@ function DonutCharts() {
 						chart_m = $charts.innerWidth() / dataset.length / 2 * 0.14;
 						chart_r = $charts.innerWidth() / dataset.length / 2 * 0.85;
 
-						charts.append('svg')
-								.attr('class', 'legend')
-								.attr('width', '100%')
-								.attr('height', 50)
-								.attr('transform', 'translate(0, -100)');
+						// charts.append('svg')
+						// 		.attr('class', 'legend')
+						// 		.attr('width', '100%')
+						// 		.attr('height', 50);
+								// .attr('transform', 'translate(0, -100)');
 
 						var donut = charts.selectAll('.donut')
 														.data(dataset)
@@ -254,7 +254,7 @@ function DonutCharts() {
 														})
 														.attr('transform', 'translate(' + (chart_r+chart_m) + ',' + (chart_r+chart_m) + ')');
 
-						createLegend(getCatNames(dataset));
+						// createLegend(getCatNames(dataset));
 						createCenter();
 
 						updateDonut();

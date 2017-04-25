@@ -100,10 +100,10 @@ router.get('/ping', function(req, res){
 
 router.get('/dashboard', (req, res) => {
 		if(!req.user) {
-				return res.status(500).redirect('/login');
+				return res.status(403).redirect('/login');
 		}
 
-		constructChartData(req.user);
+		// constructChartData(req.user);
 		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
 });
 

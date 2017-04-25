@@ -156,7 +156,7 @@ section#drafts {
 .draft-heading-cell, .draft-cell {
 	display: table-cell;
 	border-bottom: 1px solid black;
-	padding: 5px;
+	padding: 2px;
 	/*padding-top: 4px;
 	padding-bottom: 4px;*/
 }

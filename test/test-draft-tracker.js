@@ -76,8 +76,9 @@ function generateUser() {
 		password: 'test',
 		drafts: generateDrafts()
 	});
+	user.save()
 
-	return user.save();
+	return;
 }
 
 // this function deletes the entire database.
@@ -92,8 +93,8 @@ function tearDownDb() {
 describe('Draft Tracker API resource', function() {
 
 	before(function() {
-		runServer(TEST_DATABASE_URL, 8080);
-		return generateUser();
+		generateUser();
+		return runServer(TEST_DATABASE_URL); 
 	});
 
 	// beforeEach(function() {
@@ -105,9 +106,16 @@ describe('Draft Tracker API resource', function() {
 	// });
 
 	after(function() {
-		// tearDownDb();
+		tearDownDb();
 		return closeServer();
 	});
+
+	describe('Fail a test', () => {
+		it('should fail this test', () => {
+			let x = 1;
+			x.should.eql(2);
+		});
+	})
 
 	describe('find user', () => {
 		it('should have username test@test.com', () => {
@@ -115,12 +123,23 @@ describe('Draft Tracker API resource', function() {
 				.findOne({username: 'test@test.com'})
 				.exec()
 				.then(user => {
-					console.log(user)
-					user.username.should.eql('test@test.com');
+					// console.log(user);
+					user.username.should.eql('12231@test.com');
 				})
 				.catch(err => {
 					console.error(err);
 				});
+		});
+	});
+
+	describe('GET Users Endpoint', () => {
+		it('should list ALL blobs on /blobs GET', function(done) {
+		  chai.request(server)
+		    .get('/users')
+		    .end(function(err, res){
+		      res.should.have.status(200);
+		      done();
+		    });
 		});
 	});
 
@@ -129,7 +148,9 @@ describe('Draft Tracker API resource', function() {
 			return chai.request(app)
 				.get('/dashboard')
 				.then(res => {
-					res.should.have.status(404);
+					// console.log(res);
+					res.should.have.status(99999);
+					// done();
 				})
 				.catch(err => {
 					console.error(err);
