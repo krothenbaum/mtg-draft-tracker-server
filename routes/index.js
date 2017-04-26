@@ -60,9 +60,12 @@ router.get('/ping', function(req, res){
 });
 
 router.get('/dashboard', (req, res) => {
+	console.log("%%% IN DASH");
+	
     if(!req.user) {
         return res.redirect('/login');
     }
+
     res.render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
