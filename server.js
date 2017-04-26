@@ -10,9 +10,9 @@ const session = require('express-session');
 const {DATABASE_URL, PORT} = require('./config');
 const {User} = require('./models');
 
-const routes = require('./routes/index');
+//const routes = require('./routes/index');
 
-const app = express();
+const {routes, app} = require('./routes/index');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -253,5 +253,49 @@ function closeServer() {
 if (require.main === module) {
   runServer().catch(err => console.error(err));
 };
+
+
+/*
+
+
+const constructChartData = (user) => {
+	console.log(user.drafts[0].colorsPlayed);
+	data = [
+	{
+		cat: 'White',
+		val: 0
+	},
+	{
+		cat: 'Blue',
+		val: 0
+	},
+	{
+		cat: 'Black',
+		val: 0
+	},
+	{
+		cat: 'Red',
+		val: 0
+	},
+	{
+		cat: 'Green',
+		val: 0
+	},]
+	user.drafts.forEach(draft => {
+		let colorArr = draft.colorsPlayed.split(' ');
+		colorArr.forEach(color => {
+			for(let i=0; i<data.length; i++) {
+				if(data[i].cat === color) {
+					data[i].val++;
+				}
+			}
+		});
+	});
+	console.log(data);
+};
+
+constructChartData()
+
+*/
 
 module.exports = {runServer, app, closeServer};
