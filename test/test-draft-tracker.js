@@ -1,16 +1,21 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const faker = require('faker');
+// const faker = require('faker');
 const mongoose = require('mongoose');
+// // const superagent = require('superagent');
 
-// this makes the should syntax available throughout
-// this module
+// // this makes the should syntax available throughout
+// // this module
 const should = chai.should();
 const expect = chai.expect();
+// const agent = superagent.agent();
 
 const {User} = require('../models');
 const {app, runServer, closeServer} = require('../server');
 const {TEST_DATABASE_URL} = require('../config');
+const request = require('supertest');
+const api = request(app);
+const authUser = request.agent(app);
 
 chai.use(chaiHttp);
 
@@ -72,7 +77,7 @@ function generateDrafts() {
 //generate a User
 function generateUser() {
 	const user = new User ({
-		username: 'test@test.com',
+		email: 'test@test.com',
 		password: 'test',
 		drafts: generateDrafts()
 	});
@@ -90,11 +95,37 @@ function tearDownDb() {
  return mongoose.connection.dropDatabase();
 }
 
+function loginUser() {
+    return function(done) {
+        authUser
+            .post('/login')
+            .send({ email: 'test@test.com', password: 'test' })
+            .expect(302)
+            .expect('Location', '/dashboard')
+            .end(onResponse);
+
+        function onResponse(err, res) {
+           if (err) return done(err);
+           return done();
+        }
+    };
+};
+
+const getDraftId = () => {
+	User
+		.findOne({username: 'test@test.com'})
+		.exec()
+		.then(user => {
+			return user.drafts[0]._id;
+		});
+};
+
 describe('Draft Tracker API resource', function() {
 
 	before(function() {
-		generateUser();
+		
 		return runServer(TEST_DATABASE_URL); 
+
 	});
 
 	// beforeEach(function() {
@@ -110,53 +141,179 @@ describe('Draft Tracker API resource', function() {
 		return closeServer();
 	});
 
-	describe('Fail a test', () => {
-		it('should fail this test', () => {
-			let x = 1;
-			x.should.eql(2);
+	describe('testing user authentication', () => {
+		it('should create a user', (done) => {
+			api
+				.post('/register')
+				.send({email: 'test@test.com', password: 'test'})
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.end(done);
 		});
-	})
+	});
 
-	describe('find user', () => {
-		it('should have username test@test.com', () => {
-			User
-				.findOne({username: 'test@test.com'})
-				.exec()
-				.then(user => {
-					// console.log(user);
-					user.username.should.eql('12231@test.com');
+	describe('login a user', () => {
+		it('should login a user', (done) => {
+			api
+				.post('/login')
+				.send({email: 'test@test.com', password: 'test'})
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.end(done);
+		});
+	});
+
+	describe('add a draft', () => {
+		it('should login user', loginUser());
+		it('should add a draft to logged in user', (done) => {
+			authUser
+				.post('/user/add/draft')
+				.send({
+					date: '2017-04-15T01:16:38.170Z',
+					sets: 'KLD',
+					format: 'Swiss League',
+					colorsPlayed: 'White Blue',
+					matches: [{
+						matchName: 'match1',
+						gamesWon: 2,
+						gamesLost: 0
+						},{
+						matchName: 'match2',
+						gamesWon: 0,
+						gamesLost: 2
+						},{
+						matchName: 'match3',
+						gamesWon: 2,
+						gamesLost: 1
+						}]
 				})
-				.catch(err => {
-					console.error(err);
-				});
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.end(done);
 		});
 	});
 
-	describe('GET Users Endpoint', () => {
-		it('should list ALL blobs on /blobs GET', function(done) {
-		  chai.request(server)
-		    .get('/users')
-		    .end(function(err, res){
-		      res.should.have.status(200);
-		      done();
-		    });
+	describe('edit a draft', () => {
+		// it('should login user', loginUser());
+		it('should edit an existing draft record', (done) => {
+			let draftEditId = getDraftId();
+
+			authUser
+				.post('/login')
+				.send({ email: 'test@test.com', password: 'test' })
+				.expect(302)
+        .expect('Location', '/dashboard')
+        .end( (err, res) => {
+        	console.log(res.body);
+        	authUser
+						.post('/user/edit/update')
+						.send({
+							draftId: draftEditId,
+							date: '2017-04-15T01:16:38.170Z',
+							sets: 'EDITED THIS DRAFT',
+							format: 'Swiss League',
+							colorsPlayed: 'White Blue',
+							matches: [{
+								matchName: 'match1',
+								gamesWon: 2,
+								gamesLost: 0
+								},{
+								matchName: 'match2',
+								gamesWon: 0,
+								gamesLost: 2
+								},{
+								matchName: 'match3',
+								gamesWon: 2,
+								gamesLost: 1
+								}]
+					})
+					.expect(302)
+					.expect('Location', '/dashboard')
+					.end((err, res) => {
+						console.log(res.body);
+						done();
+					});
+        });				
 		});
 	});
 
-	describe('GET dashboard endpoint', () => {
-		it('should not have status 302', () => {
-			return chai.request(app)
-				.get('/dashboard')
-				.then(res => {
-					// console.log(res);
-					res.should.have.status(99999);
-					// done();
-				})
-				.catch(err => {
-					console.error(err);
-				});
-		});
-	});
+	// describe('Fail a test', () => {
+	// 	it('should fail this test', () => {
+	// 		let x = 1;
+	// 		x.should.eql(2);
+	// 	});
+	// })
+
+	// describe('find user', () => {
+	// 	it('should have username test@test.com', (done) => {
+	// 		User
+	// 			.findOne({email: 'test@test.com'})
+	// 			.exec()
+	// 			.then(user => {
+	// 				// console.log(user);
+	// 				user.email.should.eql('test@test.com');
+	// 				done();
+	// 			})
+	// 			.catch(err => {
+	// 				// console.error(err);
+	// 			});
+	// 	});
+	// });
+
+	// describe('GET Users Endpoint', () => {
+	// 	it('should list ALL blobs on /users GET', (done) => {
+	// 	  chai.request(app)
+	// 	    .get('/users')
+	// 	    .end((err, res) => {
+	// 	      res.should.have.status(200);
+	// 	      done();
+	// 	    });
+	// 	});
+	// });
+
+	// describe('Login Endpoint', () => {
+	// 	it('should create a user session successfully', (done) => {
+	// 		agent
+	// 			.post('http://localhost:8080/login')
+	// 			.set('content-type', 'application/x-www-form-urlencoded')
+	// 			.send({email: 'test@test.com', password: 'test'})
+	// 			// .type('form')
+	// 			// .send('email=test@test.com')
+	// 			// .send('password=test')
+	// 			// .send({email: 'test@test.com', password: 'test'})
+
+	// 			.then(res => {
+	// 				console.log('Response: ' + res);
+	// 				done();
+	// 			})
+	// 			.catch(err => {
+	// 				// console.error('ERRROR: ' + err);
+	// 			});
+	// 			// 	// console.log(res.statusCode);
+	// 			// 	// if(expect(res.statusCode).to.equal(200)) {
+	// 			// 	// 	return done();
+	// 			// 	// } else {
+	// 			// 	// 	return done(new Error('login not working'));
+	// 				// }
+				
+	// 	});
+	// });
+
+	// describe('GET dashboard endpoint', () => {
+	// 	it('should not have status 302', (done) => {
+	// 		return chai.request(app)
+	// 			.get('/dashboard')
+	// 			.then(res => {
+	// 				// console.log(res);
+	// 				res.should.have.status(99999);
+	// 				done();
+	// 				// done();
+	// 			})
+	// 			.catch(err => {
+	// 				// console.error(err);
+	// 			});
+	// 	});
+	// });
 
 	// describe('Register User Endpoint',() => {
 	// 	it('should redirect to dashboard after user registered', () => {

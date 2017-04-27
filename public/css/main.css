@@ -122,14 +122,14 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 }
 
 .pie-chart {
-	border: 1px solid black;
+	border: 1px solid #191919;
 	width: 150px;
 	height: 150px;
 	margin: 5px;
 }
 
 .draft-stats {
-	border: 1px solid black;
+	border: 1px solid #191919;
 	width: 150px;
 	height: 150px;
 	margin: 5px;
@@ -149,16 +149,25 @@ section#drafts {
 	display: table-row-group;
 }
 
-.draft-row {
+.draft-header-row, .draft-row {
 	display: table-row;
 }
 
 .draft-heading-cell, .draft-cell {
 	display: table-cell;
-	border-bottom: 1px solid black;
-	padding: 2px;
+	border-bottom: 1px solid #191919;
+	padding: 4px 2px;
 	/*padding-top: 4px;
 	padding-bottom: 4px;*/
+}
+
+.draft-row:nth-child(even) .draft-cell {
+  background: rgb(235,159,130);
+}
+
+.draft-row:hover .draft-cell {
+  background: rgb(211,32,42);
+  color: #FFFFFF;
 }
 
 .draft-heading-cell {
@@ -238,8 +247,8 @@ img {
 
 .card-three {
 	position: absolute;
-  left: 160px;
-  top: 0;
+ left: 160px;
+ top: 0;
 	z-index: 0;
 }
 
@@ -250,5 +259,36 @@ img {
 
 	.hidden {
 		display: initial;
+	}
+
+	.drafts {
+		margin-left: 25%;
+/*margin-right: 50%;*/
+	}
+
+	.draft-cell {
+		padding-top: 8px;
+		padding-bottom: 8px;
+	}
+
+	.draft-cell:first-child {
+		border-left: 1px solid #191919;
+	}
+
+	.draft-cell:last-child {
+		border-right: 1px solid #191919;
+	}
+
+	.draft-row:first-child .draft-cell:first-child {
+		border-bottom-left-radius: 3px
+	}
+	.draft-row:first-child .draft-cell:last-child {
+		border-bottom-right-radius: 3px
+	}
+	.draft-row:last-child .draft-cell:first-child {
+		border-bottom-left-radius: 3px
+	}
+	.draft-row:last-child .draft-cell:last-child {
+		border-bottom-right-radius: 3px
 	}
 }

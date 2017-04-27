@@ -38,7 +38,7 @@ const setMatchWon = (matches) => {
 	return matches;
 };
 
-const addDraft = (req, res) => {
+router.post('/user/add/draft', (req, res) => {
 	draftRequiredFields(req.body);
 	req.body.matches = setMatchWon(req.body.matches);
 
@@ -54,12 +54,12 @@ const addDraft = (req, res) => {
 		console.error(err);
 		res.status(500).json({error: 'Something went wrong'});
 	});
-};
+});
 
 //add a draft
-router.use('/user/add/draft', handleAuth);
+// router.use('/user/add/draft', handleAuth);
 
-router.post('/user/add/draft', addDraft);
+// router.post('/user/add/draft', addDraft);
 
 
 router.get('/', function (req, res) {
@@ -88,7 +88,7 @@ router.get('/success', function(req, res) {
 });
 
 router.get('/add-draft', function(req, res) {
-		 if(!req.user) {
+		if(!req.user) {
 				return res.redirect('/login');
 		}
 		res.render('add-draft', { title: 'Add Draft', user : req.user });
@@ -102,8 +102,7 @@ router.get('/dashboard', (req, res) => {
 		if(!req.user) {
 				return res.status(403).redirect('/login');
 		}
-
-		// constructChartData(req.user);
+		
 		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
