@@ -172,10 +172,14 @@ router.post('/user/edit/update', (req, res) => {
 		}
 	}
 
+	// console.log(req.user);
+	console.log('Req Body in Endpoint: ' + JSON.stringify(req.body));
+
 	User
 		.findOneAndUpdate({ _id : req.user.id, "drafts._id" : req.body.draftId }, { "drafts.$" : req.body })
 		.exec()
 		.then(result => {
+			// console.log(result);
 			res.status(201).redirect('/dashboard');
 		})
 		.catch(err => {

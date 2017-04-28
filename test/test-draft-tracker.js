@@ -96,19 +96,19 @@ function tearDownDb() {
 }
 
 function loginUser() {
-    return function(done) {
-        authUser
-            .post('/login')
-            .send({ email: 'test@test.com', password: 'test' })
-            .expect(302)
-            .expect('Location', '/dashboard')
-            .end(onResponse);
+		return function(done) {
+				authUser
+						.post('/login')
+						.send({ email: 'test@test.com', password: 'test' })
+						.expect(302)
+						.expect('Location', '/dashboard')
+						.end(onResponse);
 
-        function onResponse(err, res) {
-           if (err) return done(err);
-           return done();
-        }
-    };
+				function onResponse(err, res) {
+					 if (err) return done(err);
+					 return done();
+				}
+		};
 };
 
 const getDraftId = () => {
@@ -116,7 +116,9 @@ const getDraftId = () => {
 		.findOne({username: 'test@test.com'})
 		.exec()
 		.then(user => {
-			return user.drafts[0]._id;
+			const id = user.drafts[0].id
+			console.log('This is the draft id: ' + id);
+			return id;
 		});
 };
 
@@ -195,22 +197,12 @@ describe('Draft Tracker API resource', function() {
 
 	describe('edit a draft', () => {
 		// it('should login user', loginUser());
-		it('should edit an existing draft record', (done) => {
-			let draftEditId = getDraftId();
 
-			authUser
-				.post('/login')
-				.send({ email: 'test@test.com', password: 'test' })
-				.expect(302)
-        .expect('Location', '/dashboard')
-        .end( (err, res) => {
-        	console.log(res.body);
-        	authUser
-						.post('/user/edit/update')
-						.send({
-							draftId: draftEditId,
+		it('should edit an existing draft record', (done) => {
+			let draftEditId;
+			let draftBody= {							
 							date: '2017-04-15T01:16:38.170Z',
-							sets: 'EDITED THIS DRAFT',
+							sets: 'EDITED',
 							format: 'Swiss League',
 							colorsPlayed: 'White Blue',
 							matches: [{
@@ -226,14 +218,55 @@ describe('Draft Tracker API resource', function() {
 								gamesWon: 2,
 								gamesLost: 1
 								}]
-					})
-					.expect(302)
-					.expect('Location', '/dashboard')
-					.end((err, res) => {
-						console.log(res.body);
-						done();
-					});
-        });				
+					};
+
+			authUser
+				.post('/login')
+				.send({ email: 'test@test.com', password: 'test' })
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.then((res, err) => {		
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							draftEditId = user.drafts[0].id;
+							draftBody.draftId = draftEditId;
+						})
+						.catch(err => {
+							if (err) {
+								console.log('Something went wrong' + err)
+							}
+						});
+				})
+				.then( (res) => {
+					console.log('EDIT DRAFTID = ' + draftEditId);
+					console.log('DRAFT BODY = ' + draftBody);
+					return authUser
+						.post('/user/edit/update')
+						.send(draftBody)
+						.expect(302)
+						.expect('Location', '/dashboard')
+						.then((res) => {
+							User
+								.findOne({username: 'test@test.com'})
+								.exec()
+								.then(user => {
+									console.log('This should be edited: ' + user.drafts);
+									done();
+								});
+						})
+						.catch(err => {
+							if (err) {
+								console.log('Something went wrong: + err');
+							}
+						});
+				})
+				.catch(err => {
+					if (err) {
+						console.log('Something went wrong: ' + err);
+					}
+				});
 		});
 	});
 
