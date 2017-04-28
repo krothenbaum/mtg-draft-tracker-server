@@ -135,7 +135,8 @@ router.post('/user/draft/delete', (req, res) => {
 		.findById(req.user.id)
 		.exec()
 		.then(user => {
-			user.drafts.pull(req.body.draftid);
+			console.log('Draft id in endpoint: '+req.body.draftId)
+			user.drafts.pull(req.body.draftId);
 			user.save();
 			res.status(202).redirect('/dashboard');
 		})
@@ -172,9 +173,7 @@ router.post('/user/edit/update', (req, res) => {
 		}
 	}
 
-	// console.log(req.user);
-	console.log('Req Body in Endpoint: ' + JSON.stringify(req.body));
-
+	console.log(req.body);
 	User
 		.findOneAndUpdate({ _id : req.user.id, "drafts._id" : req.body.draftId }, { "drafts.$" : req.body })
 		.exec()
@@ -198,8 +197,8 @@ router.get('/edit/:draftId', (req, res) => {
 		.find({_id : req.user.id},{drafts:{ $elemMatch: {_id:req.params.draftId} }})
 		.exec()
 		.then(results => {
-			console.log(results[0].drafts[0]);
-			res.render('edit', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
+			// console.log(results[0].drafts[0]);
+			res.status(200).render('edit', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
 		})
 		.catch(err => {
 			console.error(err);

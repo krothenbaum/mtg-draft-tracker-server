@@ -26,5 +26,5 @@
 
 /* :checked */
 .details input:checked ~ .details-content {
-  max-height: 10em;
+  max-height: 25em;
 }

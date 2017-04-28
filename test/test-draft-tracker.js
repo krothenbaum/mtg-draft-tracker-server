@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 // // this makes the should syntax available throughout
 // // this module
 const should = chai.should();
-const expect = chai.expect();
+// const expect = chai.expect();
 // const agent = superagent.agent();
 
 const {User} = require('../models');
@@ -195,10 +195,41 @@ describe('Draft Tracker API resource', function() {
 		});
 	});
 
-	describe('edit a draft', () => {
-		// it('should login user', loginUser());
+	describe('get a draft by id', () => {
+		it('should get 200 response', () => {
+			let draftEditId;
+			return authUser
+				.post('/login')
+				.send({ email: 'test@test.com', password: 'test' })
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.then(res => {		
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							draftEditId = user.drafts[0].id;
+						})
+						.catch(err => {
+							if (err) {
+								console.log('Something went wrong' + err)
+							}
+						});
+				})
+				.then(res => {
+					return authUser
+						.get('/edit/' + draftEditId)
+						.expect(200)
+				})
 
-		it('should edit an existing draft record', (done) => {
+				.catch(err => {
+					if (err) console.log('Something went wrong: ' + err);
+				});
+		});
+	});
+
+	describe('edit a draft', () => {
+		it('should edit an existing draft record', () => {
 			let draftEditId;
 			let draftBody= {							
 							date: '2017-04-15T01:16:38.170Z',
@@ -220,7 +251,7 @@ describe('Draft Tracker API resource', function() {
 								}]
 					};
 
-			authUser
+			return authUser
 				.post('/login')
 				.send({ email: 'test@test.com', password: 'test' })
 				.expect(302)
@@ -239,29 +270,24 @@ describe('Draft Tracker API resource', function() {
 							}
 						});
 				})
-				.then( (res) => {
-					console.log('EDIT DRAFTID = ' + draftEditId);
-					console.log('DRAFT BODY = ' + draftBody);
+				.then(res => {
 					return authUser
 						.post('/user/edit/update')
 						.send(draftBody)
 						.expect(302)
-						.expect('Location', '/dashboard')
-						.then((res) => {
-							User
-								.findOne({username: 'test@test.com'})
-								.exec()
-								.then(user => {
-									console.log('This should be edited: ' + user.drafts);
-									done();
-								});
+						.expect('Location', '/dashboard');
+				})
+				.then(res => {
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							user.drafts[0].sets.should.eql('EDITED');
 						})
 						.catch(err => {
-							if (err) {
-								console.log('Something went wrong: + err');
-							}
+							if (err) console.log('Something went wrong: ' + err);
 						});
-				})
+				})				
 				.catch(err => {
 					if (err) {
 						console.log('Something went wrong: ' + err);
@@ -270,170 +296,53 @@ describe('Draft Tracker API resource', function() {
 		});
 	});
 
-	// describe('Fail a test', () => {
-	// 	it('should fail this test', () => {
-	// 		let x = 1;
-	// 		x.should.eql(2);
-	// 	});
-	// })
+	describe('Delete Endpoint', () => {
+		it('should delete draft and redirect to dashboard', () => {
+			let draftDeleteId;
+			return authUser
+				.post('/login')
+				.send({ email: 'test@test.com', password: 'test' })
+				.expect(302)
+				.expect('Location', '/dashboard')
+				.then(res => {		
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							draftDeleteId = user.drafts[0].id;
+						})
+						.catch(err => {
+							if (err) {
+								console.log('Something went wrong' + err)
+							}
+						});
+				})
+				.then(res => {
+					return authUser
+						.post('/user/draft/delete')
+						.send({draftId: draftDeleteId})
+						.expect(302)
+						.expect('Location', '/dashboard')
+				})
+				.then(res => {
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							console.log(user);
+							user.drafts.should.be.empty;
+						})
+						.catch(err => {
+							if (err) console.log('Something went wrong: ' + err);
+						});
+				})
+				.catch(err => {
+					if (err) console.log('Something went wrong: ' + err);
+				});
 
-	// describe('find user', () => {
-	// 	it('should have username test@test.com', (done) => {
-	// 		User
-	// 			.findOne({email: 'test@test.com'})
-	// 			.exec()
-	// 			.then(user => {
-	// 				// console.log(user);
-	// 				user.email.should.eql('test@test.com');
-	// 				done();
-	// 			})
-	// 			.catch(err => {
-	// 				// console.error(err);
-	// 			});
-	// 	});
-	// });
+		});
+	});
 
-	// describe('GET Users Endpoint', () => {
-	// 	it('should list ALL blobs on /users GET', (done) => {
-	// 	  chai.request(app)
-	// 	    .get('/users')
-	// 	    .end((err, res) => {
-	// 	      res.should.have.status(200);
-	// 	      done();
-	// 	    });
-	// 	});
-	// });
-
-	// describe('Login Endpoint', () => {
-	// 	it('should create a user session successfully', (done) => {
-	// 		agent
-	// 			.post('http://localhost:8080/login')
-	// 			.set('content-type', 'application/x-www-form-urlencoded')
-	// 			.send({email: 'test@test.com', password: 'test'})
-	// 			// .type('form')
-	// 			// .send('email=test@test.com')
-	// 			// .send('password=test')
-	// 			// .send({email: 'test@test.com', password: 'test'})
-
-	// 			.then(res => {
-	// 				console.log('Response: ' + res);
-	// 				done();
-	// 			})
-	// 			.catch(err => {
-	// 				// console.error('ERRROR: ' + err);
-	// 			});
-	// 			// 	// console.log(res.statusCode);
-	// 			// 	// if(expect(res.statusCode).to.equal(200)) {
-	// 			// 	// 	return done();
-	// 			// 	// } else {
-	// 			// 	// 	return done(new Error('login not working'));
-	// 				// }
-				
-	// 	});
-	// });
-
-	// describe('GET dashboard endpoint', () => {
-	// 	it('should not have status 302', (done) => {
-	// 		return chai.request(app)
-	// 			.get('/dashboard')
-	// 			.then(res => {
-	// 				// console.log(res);
-	// 				res.should.have.status(99999);
-	// 				done();
-	// 				// done();
-	// 			})
-	// 			.catch(err => {
-	// 				// console.error(err);
-	// 			});
-	// 	});
-	// });
-
-	// describe('Register User Endpoint',() => {
-	// 	it('should redirect to dashboard after user registered', () => {
-
-	// 		return chai.request(app)
-	// 			.post('/register')
-	// 			.set('Token', 'text/plain')
-	// 			.set('content-type', 'application/x-www-form-urlencoded')
-	// 			.type('form')
-	// 			.send('username=newuser@test.com')
-	// 			.send('password=abc123')
-	// 			.then(res => {
-	// 				res.should.have.status(200);
-	// 				expect(res).to.redirectTo('/dashboard');
-	// 			})
-	// 			.catch(err => {
-	// 				console.error(err);
-	// 			});
-	// 	});
-	// });
-
-	// describe('Login Endpoint', () => {
-	// 	it('should redirect to dashboard on successful login', () => {
-	// 		let agent = chai.request.agent(app);
-	// 		agent
-	// 			.post('/login')
-	// 			.send({username: 'test@test.com', password: 'test'})
-	// 			.then(res => {
-	// 				res.should.have.status(200);
-	// 				expect(res).to.redirectTo('/dashboard');
-	// 			})
-	// 			.catch(err => {
-	// 				console.error(err);
-	// 			});
-	// 	});
-	// });
-
-	// describe('Add Draft Endpoint', () => {
-	// 	it('should add a draft to user', () => {
-	// 		return chai.request(app)
-	// 			.post('/user/add/draft')
-	// 			.set('Token', 'text/plain')
-	// 			.set('content-type', 'application/x-www-form-urlencoded')
-	// 			.type('form')
-	// 			.send('date=2017-04-09T00:02:08.197Z')
-	// 			.send('sets=AER-KLD')
-	// 			.send('format=Swiss League')
-	// 			.send('colorsPlayed=White Blue')
-	// 			.send('matches[0][matchName]=match1')
-	// 			.send('matches[0][gamesWon]=2')
-	// 			.send('matches[0][gamesLost]=0')
-	// 			.send('matches[1][matchName]=match2')
-	// 			.send('matches[1][gamesWon]=2')
-	// 			.send('matches[1][gamesLost]=0')
-	// 			.send('matches[2][matchName]=match3')
-	// 			.send('matches[2][gamesWon]=2')
-	// 			.send('matches[2][gamesLost]=0')
-	// 			.then(res => {
-	// 				res.should.have.status(201);
-	// 				expect(res).to.redirectTo('/dashboard');
-	// 			})
-	// 			.catch(err => {
-	// 				console.error(err);
-	// 			});
-	// 	});
-	// });
-
-	// describe('Delete Draft Endpoint', () => {
-	// 	it('should remove draft and redirect to dashboard', () => {
-	// 		let draftId = '';
-	// 		User.
-	// 			findOne({username: 'test@test.com'})
-	// 			.exec()
-	// 			.then(user => {
-	// 				draftId = user.drafts[0]._id;
-	// 				console.log(draftId);
-	// 			});
-
-	// 		return chai.request(app)
-	// 			.post('/user/draft/delete')
-	// 			.send({draftid: draftId})
-	// 			.then(res => {
-	// 				res.should.have.status(202);
-	// 				expect(res).to.redirectTo('/dashboard');
-	// 			});
-	// 	});
-	// });
 
 });
 
