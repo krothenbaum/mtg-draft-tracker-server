@@ -135,7 +135,6 @@ router.post('/user/draft/delete', (req, res) => {
 		.findById(req.user.id)
 		.exec()
 		.then(user => {
-			console.log('Draft id in endpoint: '+req.body.draftId)
 			user.drafts.pull(req.body.draftId);
 			user.save();
 			res.status(202).redirect('/dashboard');
@@ -173,12 +172,16 @@ router.post('/user/edit/update', (req, res) => {
 		}
 	}
 
-	console.log(req.body);
 	User
-		.findOneAndUpdate({ _id : req.user.id, "drafts._id" : req.body.draftId }, { "drafts.$" : req.body })
+		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: { 
+				'drafts.$.matches': req.body.matches,
+				'drafts.$.colorsPlayed': req.body.colorsPlayed,
+				'drafts.$.format': req.body.format,
+				'drafts.$.sets': req.body.sets
+			}
+		})
 		.exec()
 		.then(result => {
-			// console.log(result);
 			res.status(201).redirect('/dashboard');
 		})
 		.catch(err => {

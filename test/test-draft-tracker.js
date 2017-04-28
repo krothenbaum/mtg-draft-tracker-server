@@ -1,14 +1,10 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-// const faker = require('faker');
 const mongoose = require('mongoose');
-// // const superagent = require('superagent');
 
 // // this makes the should syntax available throughout
 // // this module
 const should = chai.should();
-// const expect = chai.expect();
-// const agent = superagent.agent();
 
 const {User} = require('../models');
 const {app, runServer, closeServer} = require('../server');
@@ -20,107 +16,80 @@ const authUser = request.agent(app);
 chai.use(chaiHttp);
 
 
-function generateSets() {
-	const magicSets = ['AER-KLD','KLD','EMN-SOI','SOI','MM3'];
-	return magicSets[Math.floor(Math.random() * magicSets.length)];
-}
+// function generateSets() {
+// 	const magicSets = ['AER-KLD','KLD','EMN-SOI','SOI','MM3'];
+// 	return magicSets[Math.floor(Math.random() * magicSets.length)];
+// }
 
-function generateFormat() {
-	const magicFormats = ['Swiss League','Competitive League','Friendly League'];
-	return magicFormats[Math.floor(Math.random() * magicFormats.length)];
-}
+// function generateFormat() {
+// 	const magicFormats = ['Swiss League','Competitive League','Friendly League'];
+// 	return magicFormats[Math.floor(Math.random() * magicFormats.length)];
+// }
 
-function generateColorsPlayed() {
-	const magicColors = ['White Blue','Blue Black','Black Red','Red Green','Green White','White Black','Blue Red','Black Green','Red Whiute','Green Blue'];
-	return magicColors[Math.floor(Math.random() * magicColors.length)];
-}
+// function generateColorsPlayed() {
+// 	const magicColors = ['White Blue','Blue Black','Black Red','Red Green','Green White','White Black','Blue Red','Black Green','Red Whiute','Green Blue'];
+// 	return magicColors[Math.floor(Math.random() * magicColors.length)];
+// }
 
-function generateResult(numWon) {
-	if(numWon === 2) {
-		return true;
-	} else {
-		return false;
-	}
-}
+// function generateResult(numWon) {
+// 	if(numWon === 2) {
+// 		return true;
+// 	} else {
+// 		return false;
+// 	}
+// }
 
-function generateMatches() {
-	let matches = [];
-	for (let i = 0; i<3; i++) {
-		const numWon = Math.floor(Math.random() * 3)
-		const match = {
-			matchName: `match${i+1}`,
-			matchWon: generateResult(numWon),
-			gamesWon: numWon,
-			gamesLost: 2-numWon
-		}
-		matches.push(match);
-	}
-	return matches;
-}
+// function generateMatches() {
+// 	let matches = [];
+// 	for (let i = 0; i<3; i++) {
+// 		const numWon = Math.floor(Math.random() * 3)
+// 		const match = {
+// 			matchName: `match${i+1}`,
+// 			matchWon: generateResult(numWon),
+// 			gamesWon: numWon,
+// 			gamesLost: 2-numWon
+// 		}
+// 		matches.push(match);
+// 	}
+// 	return matches;
+// }
 
-function generateDrafts() {
-	let drafts = [];
-	for (let i = 0; i < 3; i++) {
-		const draft = {
-			date: faker.date.past(),
-			sets: generateSets(),
-			format: generateFormat(),
-			colorsPlayed: generateColorsPlayed(),
-			matches: generateMatches()
-		}
-		drafts.push(draft);
-	}
+// function generateDrafts() {
+// 	let drafts = [];
+// 	for (let i = 0; i < 3; i++) {
+// 		const draft = {
+// 			date: faker.date.past(),
+// 			sets: generateSets(),
+// 			format: generateFormat(),
+// 			colorsPlayed: generateColorsPlayed(),
+// 			matches: generateMatches()
+// 		}
+// 		drafts.push(draft);
+// 	}
 
-	return drafts;
-}
+// 	return drafts;
+// }
 
-//generate a User
-function generateUser() {
-	const user = new User ({
-		email: 'test@test.com',
-		password: 'test',
-		drafts: generateDrafts()
-	});
-	user.save()
+// //generate a User
+// function generateUser() {
+// 	const user = new User ({
+// 		email: 'test@test.com',
+// 		password: 'test',
+// 		drafts: generateDrafts()
+// 	});
+// 	user.save()
 
-	return;
-}
+// 	return;
+// }
 
 // this function deletes the entire database.
 // we'll call it in an `afterEach` block below
 // to ensure  ata from one test does not stick
 // around for next one
-function tearDownDb() {
+const tearDownDb = () => {
  console.warn('Deleting database');
  return mongoose.connection.dropDatabase();
 }
-
-function loginUser() {
-		return function(done) {
-				authUser
-						.post('/login')
-						.send({ email: 'test@test.com', password: 'test' })
-						.expect(302)
-						.expect('Location', '/dashboard')
-						.end(onResponse);
-
-				function onResponse(err, res) {
-					 if (err) return done(err);
-					 return done();
-				}
-		};
-};
-
-const getDraftId = () => {
-	User
-		.findOne({username: 'test@test.com'})
-		.exec()
-		.then(user => {
-			const id = user.drafts[0].id
-			console.log('This is the draft id: ' + id);
-			return id;
-		});
-};
 
 describe('Draft Tracker API resource', function() {
 
@@ -144,54 +113,68 @@ describe('Draft Tracker API resource', function() {
 	});
 
 	describe('testing user authentication', () => {
-		it('should create a user', (done) => {
-			api
+		it('should create a user', () => {
+			return api
 				.post('/register')
 				.send({email: 'test@test.com', password: 'test'})
 				.expect(302)
-				.expect('Location', '/dashboard')
-				.end(done);
+				.expect('Location', '/dashboard');
 		});
 	});
 
 	describe('login a user', () => {
-		it('should login a user', (done) => {
-			api
+		it('should login a user', () => {
+			return api
 				.post('/login')
 				.send({email: 'test@test.com', password: 'test'})
 				.expect(302)
-				.expect('Location', '/dashboard')
-				.end(done);
+				.expect('Location', '/dashboard');
 		});
 	});
 
 	describe('add a draft', () => {
-		it('should login user', loginUser());
-		it('should add a draft to logged in user', (done) => {
-			authUser
-				.post('/user/add/draft')
-				.send({
-					date: '2017-04-15T01:16:38.170Z',
-					sets: 'KLD',
-					format: 'Swiss League',
-					colorsPlayed: 'White Blue',
-					matches: [{
-						matchName: 'match1',
-						gamesWon: 2,
-						gamesLost: 0
-						},{
-						matchName: 'match2',
-						gamesWon: 0,
-						gamesLost: 2
-						},{
-						matchName: 'match3',
-						gamesWon: 2,
-						gamesLost: 1
-						}]
-				})
+		it('should add a draft to logged in user', () => {
+			return authUser
+				.post('/login')
+				.send({ email: 'test@test.com', password: 'test' })
 				.expect(302)
 				.expect('Location', '/dashboard')
-				.end(done);
+				.then(res => {
+					return authUser
+						.post('/user/add/draft')
+						.send({
+							date: '2017-04-15T01:16:38.170Z',
+							sets: 'KLD',
+							format: 'Swiss League',
+							colorsPlayed: 'White Blue',
+							matches: [{
+								matchName: 'match1',
+								gamesWon: 2,
+								gamesLost: 0
+								},{
+								matchName: 'match2',
+								gamesWon: 0,
+								gamesLost: 2
+								},{
+								matchName: 'match3',
+								gamesWon: 2,
+								gamesLost: 1
+								}]
+						})
+						.expect(302)
+						.expect('Location', '/dashboard');
+				})
+				.then(res => {
+					return User
+						.findOne({username: 'test@test.com'})
+						.exec()
+						.then(user => {
+							user.drafts.should.have.length(1);
+						})
+				})
+				.catch(err => {
+					if (err) console.log('Something went wrong: ' + err)
+				});
 		});
 	});
 
@@ -221,7 +204,6 @@ describe('Draft Tracker API resource', function() {
 						.get('/edit/' + draftEditId)
 						.expect(200)
 				})
-
 				.catch(err => {
 					if (err) console.log('Something went wrong: ' + err);
 				});
@@ -256,7 +238,7 @@ describe('Draft Tracker API resource', function() {
 				.send({ email: 'test@test.com', password: 'test' })
 				.expect(302)
 				.expect('Location', '/dashboard')
-				.then((res, err) => {		
+				.then((res, err) => {
 					return User
 						.findOne({username: 'test@test.com'})
 						.exec()
@@ -329,7 +311,6 @@ describe('Draft Tracker API resource', function() {
 						.findOne({username: 'test@test.com'})
 						.exec()
 						.then(user => {
-							console.log(user);
 							user.drafts.should.be.empty;
 						})
 						.catch(err => {
@@ -342,119 +323,4 @@ describe('Draft Tracker API resource', function() {
 
 		});
 	});
-
-
 });
-
-	// 	it('should return posts with the correct fields', function() {
-	// 		//Strategy: get all posts and check they have expected keys
-	// 		let resPost;
-	// 		return chai.request(app)
-	// 			.get('/posts')
-	// 			.then(function(res) {
-	// 				res.should.have.status(200);
-	// 				res.should.be.json;
-	// 				res.body.should.be.a('array');
-	// 				res.body.should.have.length.of.at.least(1);
-
-	// 				res.body.forEach(function(post) {
-	// 					post.should.be.a('object');
-	// 					post.should.include.keys('id','author','title','content', 'created');
-	// 				});
-	// 				resPost = res.body[0];
-	// 				return BlogPost.findById(resPost.id);
-	// 			})
-	// 			.then(function(post) {
-	// 					resPost.author.should.equal(post.authorName);
-	// 					resPost.title.should.equal(post.title);
-	// 					resPost.content.should.equal(post.content);
-	// 			});
-	// 	});
-
-	// });
-
-	// describe('POST endpoint', function() {
-	// 	//strategy: make a new blog post, prove it has the correct keys, and the id exists
-	// 	it('should add a new blog post', function() {
-	// 		const newPost = generateBlogPost();
-
-	// 		return chai.request(app)
-	// 			.post('/posts')
-	// 			.send(newPost)
-	// 			.then(function(res) {
-	// 				res.should.have.status(201);
-	// 				res.should.be.json;
-	// 				res.body.should.be.a('object');
-	// 				res.body.should.include.keys('id', 'author', 'title', 'content', 'created');
-	// 				res.body.id.should.not.be.null;
-	// 				res.body.author.should.equal(`${newPost.author.firstName} ${newPost.author.lastName}`);
-	// 				res.body.title.should.equal(newPost.title);
-	// 				res.body.content.should.equal(newPost.content);
-
-	// 				return BlogPost.findById(res.body.id);
-	// 			})
-	// 			.then(function(post) {
-	// 				post.author.firstName.should.equal(newPost.author.firstName);
-	// 				post.author.lastName.should.equal(newPost.author.lastName);
-	// 				post.title.should.equal(newPost.title);
-	// 				post.content.should.equal(newPost.content);
-	// 			});
-	// 	});
-	// });
-
-	// describe('PUT endpoint', function() {
-	// 	//strategy: get a post from db, make a PUT request, prove returned post has data, prove post in db is updated correctly
-	// 	it('should update the provide fields', function() {
-	// 		const updatePost = {
-	// 			title: 'This title was edited',
-	// 			content: 'This post was edited',
-	// 			author: {
-	// 				firstName: 'New',
-	// 				lastName: 'Name'
-	// 			}
-	// 		}
-
-	// 		return BlogPost
-	// 			.findOne()
-	// 			.exec()
-	// 			.then(function(post) {
-	// 				updatePost.id = post.id;
-	// 				return chai.request(app)
-	// 					.put(`/posts/${post.id}`)
-	// 					.send(updatePost);
-	// 			})
-	// 			.then(function(res) {
-	// 				res.should.have.status(204);
-	// 				return BlogPost.findById(updatePost.id).exec();
-	// 			})
-	// 			.then(function(post) {
-	// 				post.title.should.equal(updatePost.title);
-	// 				post.content.should.equal(updatePost.content);
-	// 				post.author.firstName.should.equal(updatePost.author.firstName);
-	// 				post.author.lastName.should.equal(updatePost.author.lastName);
-	// 			});
-	// 	});
-	// });
-
-	// describe('DELETE endpoint', function() {
-	// 	//strategy: get a post, request delete for post id, check for response code, check post is removed from db
-	// 	it('delete post by id', function() {
-	// 		let post;
-
-	// 		return BlogPost
-	// 			.findOne()
-	// 			.exec()
-	// 			.then(function(_post) {
-	// 				post = _post;
-	// 				return chai.request(app).delete(`/posts/${post.id}`);
-	// 			})
-	// 			.then(function(res) {
-	// 				res.should.have.status(204);
-	// 				return BlogPost.findById(post.id).exec();
-	// 			})
-	// 			.then(function(_post) {
-	// 				should.not.exist(_post);
-	// 			});
-	// 	}); 
-	// });
-// });
