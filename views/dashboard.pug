@@ -12,7 +12,9 @@ block content
 					.row.inline-block
 						.pie-chart.col-5
 							#donut-charts
-						.draft-sttas.col-5 Win rate and other stats
+						.draft-stats.col-5
+							p You're win rate is:
+							.winRate #{winRate}%
 			section.drafts.col-6
 				.drafts-table
 					.drafts-rows
@@ -27,7 +29,7 @@ block content
 							//- .draft-heading-cell(id='heading-delete') Delete
 						if user.drafts.length > 0
 							each draft in user.drafts
-								.draft-row(id= draft.id)
+								.draft-row.draft-info(id= draft.id)
 									.draft-cell.details +										
 									.draft-cell= moment(draft.date).format("M/D/YY")
 									.draft-cell= draft.sets
@@ -56,7 +58,7 @@ block content
 												i.ms.ms-gu.ms-split.ms-cost
 									.draft-cell= matchesWon(draft.matches)
 								each match in draft.matches
-									.draft-row.hidden
+									.draft-row(style='display: none;')
 										.draft-cell
 										case match.matchName
 											when 'match1'
@@ -69,16 +71,18 @@ block content
 										.draft-cell= match.gamesWon
 										.draft-cell Games Lost
 										.draft-cell= match.gamesLost
-											//- 	a(href=`edit/${draft.id}`) Edit
-											//- 	form(role='form', action='/user/draft/delete', method='POST')
-											//- 	input(type='hidden', value= draft.id, name='draftId')
-											//- 	button(type='submit') Delete
+								.draft-row.edit-delete(style='display: none;')
+									.draft-cell
+									.draft-cell
+									.draft-cell
+									.draft-cell
+									.draft-cell
+										form(action=`edit/${draft.id}`)
+											button.btn(type='submist') Edit
+									.draft-cell
+										form(role='form', action='/user/draft/delete', method='POST')
+											input(type='hidden', value= draft.id, name='draftId')
+											button.btn(type='submit') Delete
 
-									//- .draft-cell
-										
-									//- 		//- button(type='submit') 
-									//- 	//- form(role='form', action='/user/draft/edit', method='POST')
-									//- 	//- 	input(type='hidden', value= draft.id, name='draftid')
-									//- 	//- 	button(type='submit') Edit
-									//- .draft-cell
-									//- 	
+	script(type='text/javascript').
+		var local_donut_data =!{JSON.stringify(donutData)}

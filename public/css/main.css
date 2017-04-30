@@ -55,6 +55,25 @@ p {
 	transition: all ease 0.8s;
 }
 
+.draft-cell .btn {
+	width: 60px;
+	background: #FFF;
+	padding: 8px 8px;
+	margin-top: 0px;
+	border: 2px solid #0e68ab;
+	font-size: 10px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: inset 0 0 0 0 #0e68ab;
+	-webkit-transition: all ease 0.8s;
+	-moz-transition: all ease 0.8s;
+	transition: all ease 0.8s;
+}
+
 .btn:hover {
 	box-shadow: inset 200px 0 0 0 #0e68ab;
 	color: #FFF;
@@ -122,18 +141,27 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 	display: inline-block;
 }
 
+.hand {
+	display: none;
+}
+
 .pie-chart {
-	border: 1px solid #191919;
-	width: 150px;
+	/*border: 1px solid #191919;*/
+	width: 125px;
 	height: 150px;
-	margin: 5px;
+	/*margin: 5px;*/
 }
 
 .draft-stats {
-	border: 1px solid #191919;
-	width: 150px;
+	/*border: 1px solid #191919;*/
+	width: 125px;
 	height: 150px;
-	margin: 5px;
+	/*margin: 5px;*/
+}
+
+.draft-stats p {
+	margin-top: 16px;
+	font-size: 13px;
 }
 
 section#drafts {
@@ -143,7 +171,7 @@ section#drafts {
 
 .drafts-table {
 	display: table;
-	width: 100%
+	width: 100%;
 }
 
 .drafts-rows {
@@ -152,6 +180,7 @@ section#drafts {
 
 .draft-header-row, .draft-row {
 	display: table-row;
+
 }
 
 .draft-heading-cell, .draft-cell {
@@ -162,14 +191,19 @@ section#drafts {
 	padding-bottom: 4px;*/
 }
 
-.draft-row:nth-child(even) .draft-cell {
+.draft-row:nth-child(odd) .draft-cell {
 	background: rgb(179,206,234);
 }
 
-.draft-row:hover .draft-cell {
+.draft-row:not(.edit-delete):hover .draft-cell {
 	background: rgb(211,32,42);
 	color: #FFFFFF;
 }
+
+/*.edit-delete:hover .draft-cell {
+	background: rgb(211,222,42);
+	color: #FFFFFF;
+}*/
 
 .draft-heading-cell {
 	font-weight: 700;
@@ -182,6 +216,8 @@ section#drafts {
 .draft-cell i {
 	font-size: 14px;
 }
+
+
 
 /*form {
 	margin-left: 25%;
@@ -253,18 +289,35 @@ img {
 	z-index: 0;
 }
 
+.winRate {
+	font-size: 60px;
+}
+
 @media (min-width: 768px) {
 	.col-6 {
 		width: 50%;
 	}
 
-/*  .hidden {
+  .hand {
 		display: initial;
-	}*/
-
-	.draft-row .hidden {
-		display: none;
 	}
+
+	.pie-chart {
+		/*border: 1px solid #191919;*/
+		width: 125px;
+		height: 150px;
+		margin: 8px;
+	}
+
+	.draft-stats {
+		/*border: 1px solid #191919;*/
+		width: 125px;
+		height: 150px;
+		margin: 8px;
+	}
+/*	.draft-row .hidden {
+		display: none;
+	}*/
 
 	.drafts {
 		margin-left: 25%;

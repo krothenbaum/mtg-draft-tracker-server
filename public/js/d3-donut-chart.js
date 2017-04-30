@@ -1,6 +1,12 @@
 $(function() {
 
+	console.log(genData())
+
+
+
 	var donutData = genData();
+	console.log(local_donut_data)
+	donutData = local_donut_data;
 
 	var donuts = new DonutCharts();
 	donuts.create(donutData);

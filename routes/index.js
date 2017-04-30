@@ -2,6 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const {User} = require('../models');
 const router = express.Router();
+const app = express();
 
 const handleAuth = (req, res, next) => {
  if(!req.user) {
@@ -102,7 +103,13 @@ router.get('/dashboard', (req, res) => {
 		if(!req.user) {
 				return res.status(403).redirect('/login');
 		}
-		
+
+		// app.locals.blah = 'blaipp';
+		if(req.user.drafts.length > 0) {
+			app.locals.donutData = constructChartData(req.user);
+			app.locals.winRate = constructWinRate(req.user);
+		}
+
 		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
@@ -201,7 +208,7 @@ router.get('/edit/:draftId', (req, res) => {
 		.exec()
 		.then(results => {
 			// console.log(results[0].drafts[0]);
-			res.status(200).render('edit', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
+			res.status(200).render('edit-draft', {title: 'Edit Draft', user: req.user, draft: results[0].drafts[0]});
 		})
 		.catch(err => {
 			console.error(err);
@@ -256,6 +263,32 @@ const constructChartData = (user) => {
 		});
 	});
 	console.log(data);
+	
+	var obj = {
+	total:10,
+	type:"Colors",
+	unit:"M",
+	data: data
+	}
+	return [obj]
+
 };
 
-module.exports = router;
+const constructWinRate = (user) => {
+	let totalMatchesPlayed = 0;
+	let matchesWon = 0;
+
+	user.drafts.forEach(draft => {
+		draft.matches.forEach(match => {
+			totalMatchesPlayed++;
+			if (match.matchWon) {
+				matchesWon++;
+			} 
+		})
+	});
+
+		return Math.round((matchesWon/totalMatchesPlayed) * 100);
+}
+
+var routes = router;
+module.exports = {routes, app};

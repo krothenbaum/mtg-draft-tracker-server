@@ -6,7 +6,6 @@ block content
 			.container-fluid
 				.row
 					h1 Edit Draft
-					p= draft
 					form(action='/user/edit/update', method='POST')
 						input(type='hidden', name='draftId', value=draft._id)
 						.row.align-left
