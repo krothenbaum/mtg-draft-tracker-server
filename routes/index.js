@@ -252,26 +252,27 @@ const constructChartData = (user) => {
 		cat: 'Green',
 		val: 0
 	},]
+
+	var obj = {
+		total:0,
+		type:"Colors",
+		unit:"M",
+		data: data
+	}
+	
 	user.drafts.forEach(draft => {
 		let colorArr = draft.colorsPlayed.split(' ');
 		colorArr.forEach(color => {
 			for(let i=0; i<data.length; i++) {
 				if(data[i].cat === color) {
 					data[i].val++;
+					obj.total++
 				}
 			}
 		});
 	});
-	console.log(data);
-	
-	var obj = {
-	total:10,
-	type:"Colors",
-	unit:"M",
-	data: data
-	}
-	return [obj]
 
+	return [obj];
 };
 
 const constructWinRate = (user) => {

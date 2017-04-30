@@ -11,6 +11,6 @@ $(document).ready(function () {
 	});
 
 	$('.draft-info').click(function(){
-    $(this).nextUntil('.draft-info').slideToggle('slow');
-});
+    $(this).nextUntil('.row-spacing').slideToggle('slow');
+	});
 })

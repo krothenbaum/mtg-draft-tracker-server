@@ -105,7 +105,7 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 .draft-form-label {
 	display: inline-block;
 	margin-left: 15px;
-	width: 55px;
+	width: 65px;
 }
 
 .match-label {
@@ -164,6 +164,10 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 	font-size: 13px;
 }
 
+.row-spacing {
+	height: 8px;
+}
+
 section#drafts {
 	padding: 0;
 	border: none;
@@ -171,7 +175,8 @@ section#drafts {
 
 .drafts-table {
 	display: table;
-	width: 100%;
+	width: 100%; 
+	/*border-spacing: 0 8px;*/
 }
 
 .drafts-rows {
@@ -185,10 +190,26 @@ section#drafts {
 
 .draft-heading-cell, .draft-cell {
 	display: table-cell;
-	border-bottom: 1px solid #191919;
 	padding: 4px 2px;
 	/*padding-top: 4px;
 	padding-bottom: 4px;*/
+}
+
+.draft-cell {
+	/*border-bottom: 1px solid #191919;*/
+	border-top: 1px solid #191919;
+}
+
+.edit-delete .draft-cell {
+	border-bottom: 1px solid #191919;
+}
+
+.draft-info .draft-cell {
+	border-bottom: 1px solid #191919;
+}
+
+.draft-row:last-child .draft-cell {
+	border-bottom: 1px solid #191919;
 }
 
 .draft-row:nth-child(odd) .draft-cell {
@@ -318,6 +339,10 @@ img {
 /*	.draft-row .hidden {
 		display: none;
 	}*/
+
+	.draft-form {
+		margin-left: 33.33%;
+	}
 
 	.drafts {
 		margin-left: 25%;

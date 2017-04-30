@@ -83,6 +83,7 @@ block content
 										form(role='form', action='/user/draft/delete', method='POST')
 											input(type='hidden', value= draft.id, name='draftId')
 											button.btn(type='submit') Delete
+								.row-spacing
 
 	script(type='text/javascript').
 		var local_donut_data =!{JSON.stringify(donutData)}

@@ -1,19 +1,18 @@
 $(function() {
 
-	console.log(genData())
 
 
 
-	var donutData = genData();
-	console.log(local_donut_data)
+	// var donutData = genData();
+
 	donutData = local_donut_data;
 
 	var donuts = new DonutCharts();
 	donuts.create(donutData);
 
-	$('#refresh-btn').on('click', function refresh() {
-		donuts.update(genData);
-	});
+	// $('#refresh-btn').on('click', function refresh() {
+	// 	donuts.update(genData);
+	// });
 });
 		
 
@@ -23,17 +22,21 @@ function DonutCharts() {
 
 				var chart_m,
 						chart_r,
-						color = d3.scale.category20();
+						color = {Blue:'#4286f4',
+						Black: '#150b00',
+						White: '#f8e7b9',
+						Red: '#d3202a',
+						Green: '#00733e'};
 
-				var getCatNames = function(dataset) {
-						var catNames = new Array();
+				// var getCatNames = function(dataset) {
+				// 		var catNames = new Array();
 
-						for (var i = 0; i < dataset[0].data.length; i++) {
-								catNames.push(dataset[0].data[i].cat);
-						}
+				// 		for (var i = 0; i < dataset[0].data.length; i++) {
+				// 				catNames.push(dataset[0].data[i].cat);
+				// 		}
 
-						return catNames;
-				}
+				// 		return catNames;
+				// }
 
 				// var createLegend = function(catNames) {
 				// 		var legends = charts.select('.legend')
@@ -100,9 +103,9 @@ function DonutCharts() {
 										.text(function(d, i) {
 												return d.type;
 										});
-						donuts.append('text')
-										.attr('class', 'center-txt value')
-										.attr('text-anchor', 'middle');
+						// donuts.append('text')
+						// 				.attr('class', 'center-txt value')
+						// 				.attr('text-anchor', 'middle');
 						donuts.append('text')
 										.attr('class', 'center-txt percentage')
 										.attr('y', chart_r * 0.16)
@@ -117,6 +120,7 @@ function DonutCharts() {
 
 						thisDonut.select('.value')
 								.text(function(d) {
+										console.log(d);
 										return (sum)? sum.toFixed(1) + d.unit
 																: d.total.toFixed(1) + d.unit;
 								});
@@ -228,7 +232,7 @@ function DonutCharts() {
 								.append('svg:path')
 										.attr('d', arc)
 										.style('fill', function(d, i) {
-												return color(i);
+												return color[d.data.cat];
 										})
 										.style('stroke', '#FFFFFF')
 										.on(eventObj)
@@ -281,37 +285,37 @@ function DonutCharts() {
 		 */
 		function genData() {
 
-				var type = ['Colors'];
-				var unit = ['M', 'GB', ''];
-				var cat = ['White', 'Blue', 'Black', 'Red', 'Green'];
+		// 		var type = ['Colors'];
+		// 		var unit = [];
+		// 		var cat = ['White', 'Blue', 'Black', 'Red', 'Green'];
 
-				var dataset = new Array();
+		// 		var dataset = new Array();
 
-				for (var i = 0; i < type.length; i++) {
-						var data = new Array();
-						var total = 0;
+		// 		for (var i = 0; i < type.length; i++) {
+		// 				var data = new Array();
+		// 				var total = 0;
 
-						for (var j = 0; j < cat.length; j++) {
-								var value = Math.random()*10*(3-i);
-								total += value;
-								data.push({
-										"cat": cat[j],
-										"val": value
-								});
-						}
-						data = [ { cat: 'White', val: 1 },
-  { cat: 'Blue', val: 3 },
-  { cat: 'Black', val: 2 },
-  { cat: 'Red', val: 1 },
-  { cat: 'Green', val: 3 } ]
-  					total= 10;
-						dataset.push({
-								"type": type[i],
-								"unit": unit[i],
-								"data": data,
-								"total": total
-						});
-				}
-				console.log(dataset);
-				return dataset;
+		// 				for (var j = 0; j < cat.length; j++) {
+		// 						var value = Math.random()*10*(3-i);
+		// 						total += value;
+		// 						data.push({
+		// 								"cat": cat[j],
+		// 								"val": value
+		// 						});
+		// 				}
+		// 				data = [ { cat: 'White', val: 1 },
+  // { cat: 'Blue', val: 3 },
+  // { cat: 'Black', val: 2 },
+  // { cat: 'Red', val: 1 },
+  // { cat: 'Green', val: 3 } ]
+  // 					total= 10;
+		// 				dataset.push({
+		// 						"type": type[i],
+		// 						"unit": unit[i],
+		// 						"data": data,
+		// 						"total": total
+		// 				});
+		// 		}
+		// 		console.log(dataset);
+		// 		return dataset;
 		}
