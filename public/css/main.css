@@ -1,5 +1,6 @@
 @import url('animations.css');
 @import url('grid.css');
+@import url('dashboard.css');
 
 * {
 	box-sizing: border-box;
@@ -38,12 +39,12 @@ p {
 .btn {
 	width: 125px;
 	background: #FFF;
-	padding: 12px 17px;
+	padding: 12px 8px;
 	margin-top: 25px;
 	border: 2px solid #0e68ab;
 	font-size: 14px;
 	font-weight: bold;
-	letter-spacing: 3px;
+	letter-spacing: 2px;
 	text-transform: uppercase;
 	display: inline-block;
 	text-align: center;
@@ -162,12 +163,12 @@ section#drafts {
 }
 
 .draft-row:nth-child(even) .draft-cell {
-  background: rgb(235,159,130);
+	background: rgb(179,206,234);
 }
 
 .draft-row:hover .draft-cell {
-  background: rgb(211,32,42);
-  color: #FFFFFF;
+	background: rgb(211,32,42);
+	color: #FFFFFF;
 }
 
 .draft-heading-cell {
@@ -257,8 +258,12 @@ img {
 		width: 50%;
 	}
 
-	.hidden {
+/*  .hidden {
 		display: initial;
+	}*/
+
+	.draft-row .hidden {
+		display: none;
 	}
 
 	.drafts {

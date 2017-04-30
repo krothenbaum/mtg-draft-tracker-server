@@ -15,73 +15,6 @@ const authUser = request.agent(app);
 
 chai.use(chaiHttp);
 
-
-// function generateSets() {
-// 	const magicSets = ['AER-KLD','KLD','EMN-SOI','SOI','MM3'];
-// 	return magicSets[Math.floor(Math.random() * magicSets.length)];
-// }
-
-// function generateFormat() {
-// 	const magicFormats = ['Swiss League','Competitive League','Friendly League'];
-// 	return magicFormats[Math.floor(Math.random() * magicFormats.length)];
-// }
-
-// function generateColorsPlayed() {
-// 	const magicColors = ['White Blue','Blue Black','Black Red','Red Green','Green White','White Black','Blue Red','Black Green','Red Whiute','Green Blue'];
-// 	return magicColors[Math.floor(Math.random() * magicColors.length)];
-// }
-
-// function generateResult(numWon) {
-// 	if(numWon === 2) {
-// 		return true;
-// 	} else {
-// 		return false;
-// 	}
-// }
-
-// function generateMatches() {
-// 	let matches = [];
-// 	for (let i = 0; i<3; i++) {
-// 		const numWon = Math.floor(Math.random() * 3)
-// 		const match = {
-// 			matchName: `match${i+1}`,
-// 			matchWon: generateResult(numWon),
-// 			gamesWon: numWon,
-// 			gamesLost: 2-numWon
-// 		}
-// 		matches.push(match);
-// 	}
-// 	return matches;
-// }
-
-// function generateDrafts() {
-// 	let drafts = [];
-// 	for (let i = 0; i < 3; i++) {
-// 		const draft = {
-// 			date: faker.date.past(),
-// 			sets: generateSets(),
-// 			format: generateFormat(),
-// 			colorsPlayed: generateColorsPlayed(),
-// 			matches: generateMatches()
-// 		}
-// 		drafts.push(draft);
-// 	}
-
-// 	return drafts;
-// }
-
-// //generate a User
-// function generateUser() {
-// 	const user = new User ({
-// 		email: 'test@test.com',
-// 		password: 'test',
-// 		drafts: generateDrafts()
-// 	});
-// 	user.save()
-
-// 	return;
-// }
-
 // this function deletes the entire database.
 // we'll call it in an `afterEach` block below
 // to ensure  ata from one test does not stick
@@ -94,18 +27,8 @@ const tearDownDb = () => {
 describe('Draft Tracker API resource', function() {
 
 	before(function() {
-		
 		return runServer(TEST_DATABASE_URL); 
-
 	});
-
-	// beforeEach(function() {
-		
-	// });
-
-	// afterEach(function() {
-		
-	// });
 
 	after(function() {
 		tearDownDb();
