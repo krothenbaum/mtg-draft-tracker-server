@@ -27,7 +27,7 @@ Edit Draft
 ### Technologies Used
 -   Server Side: Node.js, Express, Mongoose, Passport.js
 -   Database: MongoDB
--   Client Side: jQuery, D3.js
+-   Client Side: jQuery, D3.js, Pug
 -   Testing: Chai, Mocha, Supertest
 
 ### Road Map to v2
