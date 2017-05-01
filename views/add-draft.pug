@@ -5,8 +5,8 @@ block content
 		section
 			.container-fluid
 				.row
-					h1 Add Draft
-					.draft-form
+					.draft-form.col-6
+						h1 Add Draft
 						form(action='/user/add/draft', method='POST')
 							.row.align-left
 								label.draft-form-label(for='date') Date:
@@ -82,4 +82,4 @@ block content
 									option(value='1') 1
 									option(value='2') 2
 							.row.align-left
-								button.btn(type='submit') Submit
+								button.btn.draft-btn(type='submit') Submit

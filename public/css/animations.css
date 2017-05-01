@@ -33,8 +33,22 @@
 	}
 }
 
-.slideLefToRight {
+.slideLeftToRight {
 	animation: 1s ease-in-out 0s 1 slideLeftToRight;	
+}
+
+@keyframes slideRightToLeft {
+	0% {
+		transform: translateX(150%);
+	}
+
+	100% {
+		transform: translateX(0%);
+	}
+}
+
+.slideRightToLeft {
+	animation: 1s ease-in-out 0s 1 slideRightToLeft;	
 }
 
 @keyframes fadeIn {

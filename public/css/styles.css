@@ -238,8 +238,8 @@ header {
 
 .nav-collapse a:active,
 .nav-collapse .active a {
-  color: #FFF;
-  background: rgb(179,206,234);
+  color: #000;
+  background: rgb(255,255,255);
 }
 
 @media screen and (min-width: 40em) {

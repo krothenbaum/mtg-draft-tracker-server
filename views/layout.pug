@@ -9,7 +9,7 @@ html
     link(rel='stylesheet', href='/css/keyrune.css')
     link(rel='stylesheet', href='/css/styles.css')
     link(rel='stylesheet', href='/css/main.css')
-    script(src='js/responsive-nav.js')
+    script(src='/js/responsive-nav.js')
   body
     if (error && error.length > 0)
       br
@@ -33,7 +33,7 @@ html
             li.menu-item
               a(href='logout', data-scroll) Log Out
     block content
-
+    
     script(src='/js/fastclick.js')
     script(src='/js/scroll.js')
     script(src='/js/fixed-responsive-nav.js')

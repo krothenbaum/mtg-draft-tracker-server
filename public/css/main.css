@@ -20,8 +20,17 @@ section {
 	height: 100vH;  
 }
 
+.gray {
+	background-color: rgb(247, 247, 247);
+}
+
 h1 {
 	font-size: 3em;
+}
+
+.draft-form h1 {
+	text-align: left;
+	margin-left: 65px;
 }
 
 h3 {
@@ -50,28 +59,17 @@ p {
 	text-align: center;
 	cursor: pointer;
 	box-shadow: inset 0 0 0 0 #0e68ab;
-	-webkit-transition: all ease 0.8s;
+/*	-webkit-transition: all ease 0.8s;
 	-moz-transition: all ease 0.8s;
-	transition: all ease 0.8s;
+	transition: all ease 0.8s;*/
 }
 
 .draft-cell .btn {
 	width: 60px;
-	background: #FFF;
 	padding: 8px 8px;
 	margin-top: 0px;
-	border: 2px solid #0e68ab;
 	font-size: 10px;
 	font-weight: bold;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-	display: inline-block;
-	text-align: center;
-	cursor: pointer;
-	box-shadow: inset 0 0 0 0 #0e68ab;
-	-webkit-transition: all ease 0.8s;
-	-moz-transition: all ease 0.8s;
-	transition: all ease 0.8s;
 }
 
 .btn:hover {
@@ -146,22 +144,18 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 }
 
 .pie-chart {
-	/*border: 1px solid #191919;*/
 	width: 125px;
 	height: 150px;
-	/*margin: 5px;*/
 }
 
 .draft-stats {
-	/*border: 1px solid #191919;*/
 	width: 125px;
 	height: 150px;
-	/*margin: 5px;*/
 }
 
 .draft-stats p {
-	margin-top: 16px;
-	font-size: 13px;
+	margin-top: -16px;
+	font-size: 14px;
 }
 
 .row-spacing {
@@ -176,7 +170,6 @@ section#drafts {
 .drafts-table {
 	display: table;
 	width: 100%; 
-	/*border-spacing: 0 8px;*/
 }
 
 .drafts-rows {
@@ -191,12 +184,9 @@ section#drafts {
 .draft-heading-cell, .draft-cell {
 	display: table-cell;
 	padding: 4px 2px;
-	/*padding-top: 4px;
-	padding-bottom: 4px;*/
 }
 
 .draft-cell {
-	/*border-bottom: 1px solid #191919;*/
 	border-top: 1px solid #191919;
 }
 
@@ -220,11 +210,6 @@ section#drafts {
 	background: rgb(211,32,42);
 	color: #FFFFFF;
 }
-
-/*.edit-delete:hover .draft-cell {
-	background: rgb(211,222,42);
-	color: #FFFFFF;
-}*/
 
 .draft-heading-cell {
 	font-weight: 700;
@@ -289,24 +274,32 @@ img {
 	margin-top: 24px;
 }
 
+.phone {
+	display: none;
+}
+
+.phone img {
+	width: 500px;
+}
+
 .card-one {
 	position: absolute;
 	left: 160px;
-	top: 0;
+	top: 48px;
 	z-index: 2;
 }
 
 .card-two {
 	position: absolute;
 	left: 160px;
-	top: 0;
+	top: 48px;
 	z-index: 1;
 }
 
 .card-three {
 	position: absolute;
  left: 160px;
- top: 0;
+ top: 48px;
 	z-index: 0;
 }
 
@@ -319,10 +312,13 @@ img {
 		width: 50%;
 	}
 
-  .hand {
+ .hand {
 		display: initial;
 	}
-
+	
+	.phone {
+		display: initial;
+	}
 	.pie-chart {
 		/*border: 1px solid #191919;*/
 		width: 125px;
@@ -342,6 +338,10 @@ img {
 
 	.draft-form {
 		margin-left: 33.33%;
+	}
+
+	.draft-btn {
+		margin-left: 92px;
 	}
 
 	.drafts {
