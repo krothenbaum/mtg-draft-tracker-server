@@ -25,10 +25,10 @@ Add Draft
 Edit Draft
 
 ### Technologies Used
--Server Side: Node.js, Express, Mongoose, Passport.js
--Database: MongoDB
--Client Side: jQuery, D3.js
--Testing: Chai, Mocha, Supertest
+-   Server Side: Node.js, Express, Mongoose, Passport.js
+-   Database: MongoDB
+-   Client Side: jQuery, D3.js
+-   Testing: Chai, Mocha, Supertest
 
 ### Road Map to v2
 Add details to draft records: Notes, lands played, colors splashed, opponents deck
