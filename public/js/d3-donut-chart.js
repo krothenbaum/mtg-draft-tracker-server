@@ -1,18 +1,10 @@
 $(function() {
 
-
-
-
-	// var donutData = genData();
-
 	donutData = local_donut_data;
 
 	var donuts = new DonutCharts();
 	donuts.create(donutData);
 
-	// $('#refresh-btn').on('click', function refresh() {
-	// 	donuts.update(genData);
-	// });
 });
 		
 
@@ -27,40 +19,6 @@ function DonutCharts() {
 						White: '#f8e7b9',
 						Red: '#d3202a',
 						Green: '#00733e'};
-
-				// var getCatNames = function(dataset) {
-				// 		var catNames = new Array();
-
-				// 		for (var i = 0; i < dataset[0].data.length; i++) {
-				// 				catNames.push(dataset[0].data[i].cat);
-				// 		}
-
-				// 		return catNames;
-				// }
-
-				// var createLegend = function(catNames) {
-				// 		var legends = charts.select('.legend')
-				// 										.selectAll('g')
-				// 												.data(catNames)
-				// 										.enter().append('g');
-				// 												// .attr('transform', function(d, i) {
-				// 												// 		return 'translate(' + (i * 150 + 50) + ', 10)';
-				// 												// });
-		
-				// 		legends.append('circle')
-				// 				.attr('class', 'legend-icon')
-				// 				.attr('r', 6)
-				// 				.style('fill', function(d, i) {
-				// 						return color(i);
-				// 				});
-		
-				// 		legends.append('text')
-				// 				.attr('dx', '1em')
-				// 				.attr('dy', '.3em')
-				// 				.text(function(d) {
-				// 						return d;
-				// 				});
-				// }
 
 				var createCenter = function(pie) {
 
@@ -103,9 +61,7 @@ function DonutCharts() {
 										.text(function(d, i) {
 												return d.type;
 										});
-						// donuts.append('text')
-						// 				.attr('class', 'center-txt value')
-						// 				.attr('text-anchor', 'middle');
+
 						donuts.append('text')
 										.attr('class', 'center-txt percentage')
 										.attr('y', chart_r * 0.16)
@@ -247,12 +203,6 @@ function DonutCharts() {
 						chart_m = $charts.innerWidth() / dataset.length / 2 * 0.14;
 						chart_r = $charts.innerWidth() / dataset.length / 2 * 0.85;
 
-						// charts.append('svg')
-						// 		.attr('class', 'legend')
-						// 		.attr('width', '100%')
-						// 		.attr('height', 50);
-								// .attr('transform', 'translate(0, -100)');
-
 						var donut = charts.selectAll('.donut')
 														.data(dataset)
 												.enter().append('svg:svg')
@@ -264,7 +214,7 @@ function DonutCharts() {
 														})
 														.attr('transform', 'translate(' + (chart_r+chart_m) + ',' + (chart_r+chart_m) + ')');
 
-						// createLegend(getCatNames(dataset));
+
 						createCenter();
 
 						updateDonut();
@@ -277,45 +227,4 @@ function DonutCharts() {
 
 						updateDonut();
 				}
-		}
-
-
-		/*
-		 * Returns a json-like object.
-		 */
-		function genData() {
-
-		// 		var type = ['Colors'];
-		// 		var unit = [];
-		// 		var cat = ['White', 'Blue', 'Black', 'Red', 'Green'];
-
-		// 		var dataset = new Array();
-
-		// 		for (var i = 0; i < type.length; i++) {
-		// 				var data = new Array();
-		// 				var total = 0;
-
-		// 				for (var j = 0; j < cat.length; j++) {
-		// 						var value = Math.random()*10*(3-i);
-		// 						total += value;
-		// 						data.push({
-		// 								"cat": cat[j],
-		// 								"val": value
-		// 						});
-		// 				}
-		// 				data = [ { cat: 'White', val: 1 },
-  // { cat: 'Blue', val: 3 },
-  // { cat: 'Black', val: 2 },
-  // { cat: 'Red', val: 1 },
-  // { cat: 'Green', val: 3 } ]
-  // 					total= 10;
-		// 				dataset.push({
-		// 						"type": type[i],
-		// 						"unit": unit[i],
-		// 						"data": data,
-		// 						"total": total
-		// 				});
-		// 		}
-		// 		console.log(dataset);
-		// 		return dataset;
 		}

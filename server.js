@@ -12,8 +12,6 @@ const {User} = require('./models');
 
 const {routes, app} = require('./routes/index');
 
-// const app = express();
-
 app.set('views', './views');
 app.set('view engine', 'pug');
 

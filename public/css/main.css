@@ -59,9 +59,6 @@ p {
 	text-align: center;
 	cursor: pointer;
 	box-shadow: inset 0 0 0 0 #0e68ab;
-/*	-webkit-transition: all ease 0.8s;
-	-moz-transition: all ease 0.8s;
-	transition: all ease 0.8s;*/
 }
 
 .draft-cell .btn {
@@ -223,18 +220,6 @@ section#drafts {
 	font-size: 14px;
 }
 
-
-
-/*form {
-	margin-left: 25%;
-	text-align: left;
-}*/
-
-/*.form-row {
-	display: block;
-	margin-bottom: 4px;
-}*/
-
 .mana-symbols {
 	padding-top: 50px;
 	min-height: 100px;
@@ -315,26 +300,22 @@ img {
  .hand {
 		display: initial;
 	}
-	
+
 	.phone {
 		display: initial;
 	}
 	.pie-chart {
-		/*border: 1px solid #191919;*/
 		width: 125px;
 		height: 150px;
 		margin: 8px;
 	}
 
 	.draft-stats {
-		/*border: 1px solid #191919;*/
+
 		width: 125px;
 		height: 150px;
 		margin: 8px;
 	}
-/*	.draft-row .hidden {
-		display: none;
-	}*/
 
 	.draft-form {
 		margin-left: 33.33%;
@@ -346,7 +327,6 @@ img {
 
 	.drafts {
 		margin-left: 25%;
-/*margin-right: 50%;*/
 	}
 
 	.draft-cell {
