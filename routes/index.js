@@ -81,10 +81,6 @@ router.get('/add-draft', function(req, res) {
 		res.render('add-draft', { title: 'Add Draft', user : req.user });
 });
 
-router.get('/ping', function(req, res){
-		res.status(200).send("pong!");
-});
-
 router.get('/dashboard', (req, res) => {
 		if(!req.user) {
 				return res.status(403).redirect('/login');
