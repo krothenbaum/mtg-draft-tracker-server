@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
+const expressValidator = require('express-validator');
 
 
 const {DATABASE_URL, PORT} = require('./config');
@@ -14,7 +15,7 @@ const {routes, app} = require('./routes/index');
 
 app.set('views', './views');
 app.set('view engine', 'pug');
-
+app.use(expressValidator);
 app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());

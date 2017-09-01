@@ -1,6 +1,6 @@
 const express = require('express');
 const passport = require('passport');
-const {User} = require('../models');
+const { User } = require('../models');
 const router = express.Router();
 const app = express();
 
@@ -49,31 +49,41 @@ router.post('/user/add/draft', (req, res) => {
 	});
 });
 
+//render index and if user is logged in send user object
 router.get('/', function (req, res) {
 		res.render('index', { user : req.user });
 });
 
+//render register user view
 router.get('/register', function(req, res) {
 		res.render('register', {title: 'Create account' });
 });
 
+
+//render login view and send user object
 router.get('/login', function(req, res) {
 		res.render('login', { user : req.user });
 });
 
+
+//authenticate user with passport, on success route to dashboard
 router.post('/login', passport.authenticate('local'), function(req, res) {
 		res.status(200).redirect('/dashboard');
 });
 
+
+//logout user and redirect to index
 router.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
 });
 
+//remove?
 router.get('/success', function(req, res) {
 		res.render('success', {});
 });
 
+//check user is logged if not redirect to login, else render add-draft screen and send user object
 router.get('/add-draft', function(req, res) {
 		if(!req.user) {
 				return res.redirect('/login');
@@ -81,12 +91,14 @@ router.get('/add-draft', function(req, res) {
 		res.render('add-draft', { title: 'Add Draft', user : req.user });
 });
 
+//check user is logged in if not redirect to login
+//if user has drafts calculate values for d3 charts
+//render dashboard and send user object
 router.get('/dashboard', (req, res) => {
 		if(!req.user) {
 				return res.status(403).redirect('/login');
 		}
 
-		// app.locals.blah = 'blaipp';
 		if(req.user.drafts.length > 0) {
 			app.locals.donutData = constructChartData(req.user);
 			app.locals.winRate = constructWinRate(req.user);
@@ -95,11 +107,16 @@ router.get('/dashboard', (req, res) => {
 		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
 });
 
+
+//post new user email and password and create new user, redirect to dashboard
 router.post('/register', (req, res) => {
+	// req.sanitize('email').trim();
+	// req.assert('passowrd', 'Must enter a Password').notEmpty();
+	// req.assert('email', 'Valid email address required').isEmail();
 	User.register(new User({ username : req.body.email }), req.body.password, err => {
 		if (err) {
 			return res.render('register', {});
-		} 
+		}
 
 		passport.authenticate('local')(req, res, () => {
 			req.session.save((err) => {
@@ -107,12 +124,10 @@ router.post('/register', (req, res) => {
 					return next(err);
 				}
 				res.redirect('/dashboard');
-			});      
+			});
 		});
 	});
 });
-
-
 
 //delete by draft id
 router.post('/user/draft/delete', (req, res) => {
@@ -144,7 +159,7 @@ router.post('/user/edit/update', (req, res) => {
 	req.body.matches = setMatchWon(req.body.matches);
 
 	User
-		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: { 
+		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: {
 				'drafts.$.matches': req.body.matches,
 				'drafts.$.colorsPlayed': req.body.colorsPlayed,
 				'drafts.$.format': req.body.format,
@@ -179,19 +194,6 @@ router.get('/edit/:draftId', (req, res) => {
 		});
 });
 
-// router.get('/users', (req, res) => {
-// 	User
-// 		.find()
-// 		.exec()
-// 		.then(users => {
-// 			res.status(200).json(users.map(user => user.apiRepr()));
-// 		})
-// 		.catch(err => {
-// 			console.error(err);
-// 			res.status(500).json({error: 'something went terribly wrong'});
-// 		});
-// });
-
 const constructChartData = (user) => {
 	console.log(user.drafts[0].colorsPlayed);
 	data = [
@@ -222,7 +224,7 @@ const constructChartData = (user) => {
 		unit:"M",
 		data: data
 	}
-	
+
 	user.drafts.forEach(draft => {
 		let colorArr = draft.colorsPlayed.split(' ');
 		colorArr.forEach(color => {
@@ -247,11 +249,11 @@ const constructWinRate = (user) => {
 			totalMatchesPlayed++;
 			if (match.matchWon) {
 				matchesWon++;
-			} 
+			}
 		})
 	});
 
-		return Math.round((matchesWon/totalMatchesPlayed) * 100);
+	return Math.round((matchesWon/totalMatchesPlayed) * 100);
 }
 
 var routes = router;

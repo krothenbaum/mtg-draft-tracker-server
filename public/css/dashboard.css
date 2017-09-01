@@ -28,3 +28,18 @@
 .details input:checked ~ .details-content {
   max-height: 25em;
 }
+
+.page-bg {
+  background: url('./images/draftTrackerLogo.svg');
+ -webkit-filter: blur(5px);
+ -moz-filter: blur(5px);
+ -o-filter: blur(5px);
+ -ms-filter: blur(5px);
+ filter: blur(5px);
+ position: fixed;
+ width: 100%;
+ height: 100%;
+ top: 0;
+ left: 0;
+ z-index: -1;
+}

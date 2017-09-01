@@ -4,13 +4,14 @@
   "description": "Magic: The Gathering Draft Tracker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "mocha"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
     "express": "^4.12.4",
     "express-session": "^1.15.2",
+    "express-validator": "^3.2.0",
     "moment": "^2.18.1",
     "mongoose": "^4.7.1",
     "morgan": "^1.7.0",
@@ -32,9 +33,9 @@
     "hyperdev",
     "express"
   ],
-  "repository" : { 
-    "type" : "git",
-    "url" : "https://github.com/krothenbaum/mtg-draft-tracker-server"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/krothenbaum/mtg-draft-tracker-server"
   },
   "license": "MIT"
 }

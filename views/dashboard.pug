@@ -4,7 +4,7 @@ block content
 	if !user
 		p no user
 	else
-		main
+		main.page-bg
 			section.stats
 				.container-fluid
 					.row
@@ -15,7 +15,7 @@ block content
 						.draft-stats.col-5
 							.winRate #{winRate}%
 							p win rate
-			section.drafts.col-6
+			section(id='drafts').drafts.col-6
 				.drafts-table
 					.drafts-rows
 						.draft-header-row(id='draft-table-header')
