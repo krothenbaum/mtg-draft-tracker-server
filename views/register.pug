@@ -8,14 +8,16 @@ block content
           h1 Start Tracking
           p.lead Create your account
         .row
-          form(role='form', action="/register", method="post")
+          form(role='form', action="/register", method="post", onsubmit='return continueOrNot()')
             .row
               label.form-icon(for='email')
                 i.ms.ms-planeswalker.ms-2x
-              input(type='text', name="email", placeholder='Email')
+              input(type='text', name="email", placeholder='Email', id='emailfield')
             .row
               label.form-icon(for='password')
                 i.ss.ss-usg.ss-2x
               input(type='password', name="password", placeholder='Password')
             .row
               button.btn(type='submit') Submit
+  
+  script(src='/js/validate.js')

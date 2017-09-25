@@ -4,7 +4,7 @@
   "description": "Magic: The Gathering Draft Tracker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "mocha"
   },
   "dependencies": {

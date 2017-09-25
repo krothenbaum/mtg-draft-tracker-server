@@ -17,7 +17,7 @@ section {
 
 .scroll-section {
 	min-height: 480px;
-	height: 100vH;  
+	height: 100vH;
 }
 
 .gray {
@@ -66,7 +66,7 @@ p {
 	display: inline-block;
 	text-align: center;
 	cursor: pointer;
-	box-shadow: inset 0 0 0 0 #0e68ab;
+	/*box-shadow: inset 0 0 0 0 #0e68ab;*/
 }
 
 .draft-cell .btn {
@@ -78,8 +78,11 @@ p {
 }
 
 .btn:hover {
-	box-shadow: inset 200px 0 0 0 #0e68ab;
+	/*box-shadow: inset 200px 0 0 0 #0e68ab;*/
+	background-color: #0e68ab;
 	color: #FFF;
+	transition: color .3s ease-in-out;
+	transition: background-color .3s ease-in-out;
 }
 
 input[type='text'], input[type='password'], input[type='date'], select {
@@ -174,7 +177,7 @@ section#drafts {
 
 .drafts-table {
 	display: table;
-	width: 100%; 
+	width: 100%;
 }
 
 .drafts-rows {
@@ -273,6 +276,10 @@ img {
 
 .phone img {
 	width: 500px;
+}
+
+.phone iframe {
+	margin-top: 80px;
 }
 
 .card-one {

@@ -1,0 +1,89 @@
+extends layout
+
+block content
+	if !user
+		p no user
+	else
+		main.page-bg
+			section.stats
+				.container-fluid
+					.row
+						h1 Dashboard
+					.row.inline-block
+						.pie-chart.col-5
+							#donut-charts
+						.draft-stats.col-5
+							.winRate #{winRate}%
+							p win rate
+			section(id='drafts').drafts.col-6
+				.drafts-table
+					.drafts-rows
+						.draft-header-row(id='draft-table-header')
+							.draft-heading-cell(id='heading-details') Details
+							.draft-heading-cell(id='heading-date') Date
+							.draft-heading-cell(id='heading-set') Set
+							.draft-heading-cell(id='heading-format') Format
+							.draft-heading-cell(id='heading-colors') Colors
+							.draft-heading-cell(id='heading-record') Record
+							//- .draft-heading-cell(id='heading-edit') Edit
+							//- .draft-heading-cell(id='heading-delete') Delete
+						if user.drafts.length > 0
+							each draft in user.drafts
+								.draft-row.draft-info(id= draft.id)
+									.draft-cell.details +										
+									.draft-cell= moment(draft.date).format("M/D/YY")
+									.draft-cell= draft.sets
+									.draft-cell= draft.format
+									.draft-cell
+										case draft.colorsPlayed
+											when 'White Blue'
+												i.ms.ms-wu.ms-split.ms-cost
+											when 'Blue Black'
+												i.ms.ms-ub.ms-split.ms-cost
+											when 'Black Red'
+												i.ms.ms-br.ms-split.ms-cost
+											when 'Red Green'
+												i.ms.ms-rg.ms-split.ms-cost
+											when 'Green White'
+												i.ms.ms-gw.ms-split.ms-cost
+											when 'White Black'
+												i.ms.ms-wb.ms-split.ms-cost
+											when 'Blue Red'
+												i.ms.ms-ur.ms-split.ms-cost
+											when 'Black Green'
+												i.ms.ms-bg.ms-split.ms-cost
+											when 'Red White'
+												i.ms.ms-rw.ms-split.ms-cost
+											when 'Green Blue'
+												i.ms.ms-gu.ms-split.ms-cost
+									.draft-cell= matchesWon(draft.matches)
+								each match in draft.matches
+									.draft-row(style='display: none;')
+										.draft-cell
+										case match.matchName
+											when 'match1'
+												.draft-cell Match 1
+											when 'match2'
+												.draft-cell Match 2
+											when 'match3'
+												.draft-cell Match 3
+										.draft-cell Games Won
+										.draft-cell= match.gamesWon
+										.draft-cell Games Lost
+										.draft-cell= match.gamesLost
+								.draft-row.edit-delete(style='display: none;')
+									.draft-cell
+									.draft-cell
+									.draft-cell
+									.draft-cell
+									.draft-cell
+										form(action=`edit/${draft.id}`)
+											button.btn(type='submist') Edit
+									.draft-cell
+										form(role='form', action='/user/draft/delete', method='POST')
+											input(type='hidden', value= draft.id, name='draftId')
+											button.btn(type='submit') Delete
+								.row-spacing
+
+	script(type='text/javascript').
+		var local_donut_data =!{JSON.stringify(donutData)}
