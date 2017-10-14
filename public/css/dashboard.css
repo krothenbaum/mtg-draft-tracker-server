@@ -73,18 +73,15 @@
 }
 
 .dashboard {
-  right: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: rgba(255, 255, 255, 0.9);
   position: absolute;
 }
 
 @media (min-width: 768px) {
   .dashboard {
-    top: 10vh;
-    height: 80vh;
-    width: 70vw;
+    width: 70%;
   }
 }
