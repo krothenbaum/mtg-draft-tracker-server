@@ -92,14 +92,14 @@ router.get('/dashboard', (req, res) => {
 			app.locals.winRate = constructWinRate(req.user);
 		}
 
-		res.status(200).render('dashboard', {title: 'Dashboard', user: req.user});
+		res.status(200).render('dashboard-update', {title: 'Dashboard', user: req.user});
 });
 
 router.post('/register', (req, res) => {
 	User.register(new User({ username : req.body.email }), req.body.password, err => {
 		if (err) {
 			return res.render('register', {});
-		} 
+		}
 
 		passport.authenticate('local')(req, res, () => {
 			req.session.save((err) => {
@@ -107,7 +107,7 @@ router.post('/register', (req, res) => {
 					return next(err);
 				}
 				res.redirect('/dashboard');
-			});      
+			});
 		});
 	});
 });
@@ -144,7 +144,7 @@ router.post('/user/edit/update', (req, res) => {
 	req.body.matches = setMatchWon(req.body.matches);
 
 	User
-		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: { 
+		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: {
 				'drafts.$.matches': req.body.matches,
 				'drafts.$.colorsPlayed': req.body.colorsPlayed,
 				'drafts.$.format': req.body.format,
@@ -222,7 +222,7 @@ const constructChartData = (user) => {
 		unit:"M",
 		data: data
 	}
-	
+
 	user.drafts.forEach(draft => {
 		let colorArr = draft.colorsPlayed.split(' ');
 		colorArr.forEach(color => {
@@ -247,7 +247,7 @@ const constructWinRate = (user) => {
 			totalMatchesPlayed++;
 			if (match.matchWon) {
 				matchesWon++;
-			} 
+			}
 		})
 	});
 

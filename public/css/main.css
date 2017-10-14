@@ -171,65 +171,71 @@ input[type='text']:focus, input[type='password']:focus, input[type='date']:focus
 }
 
 section#drafts {
-	padding: 0;
-	border: none;
+	/*padding: 0;
+	border: none;*/
 }
 
 .drafts-table {
-	display: table;
-	width: 100%;
+	display: inline-block;
+	/*display: table;
+	width: 100%;*/
 }
 
 .drafts-rows {
-	display: table-row-group;
+	/*display: table-row-group;*/
 }
 
 .draft-header-row, .draft-row {
-	display: table-row;
+	/*display: table-row;*/
 
 }
 
 .draft-heading-cell, .draft-cell {
-	display: table-cell;
-	padding: 4px 2px;
+	display: inline-block;
+	min-width: 16px;
+	min-height: 16px;
+	padding-left: 4px;
+	padding-right: 4px;
+	/*display: table-cell;
+	padding: 4px 2px;*/
 }
 
 .draft-cell {
-	border-top: 1px solid #191919;
+	/*border-top: 1px solid #191919;*/
 }
 
 .edit-delete .draft-cell {
-	border-bottom: 1px solid #191919;
+	/*border-bottom: 1px solid #191919;*/
 }
 
 .draft-info .draft-cell {
-	border-bottom: 1px solid #191919;
+	/*border-bottom: 1px solid #191919;*/
 }
 
 .draft-row:last-child .draft-cell {
-	border-bottom: 1px solid #191919;
+	/*border-bottom: 1px solid #191919;*/
 }
 
 .draft-row:nth-child(odd) .draft-cell {
-	background: rgb(179,206,234);
+	/*background: rgb(179,206,234);*/
 }
 
 .draft-row:not(.edit-delete):hover .draft-cell {
-	background: rgb(211,32,42);
-	color: #FFFFFF;
+	/*background: rgb(211,32,42);
+	color: #FFFFFF;*/
 }
 
-.draft-heading-cell {
+/*.draft-heading-cell {
 	font-weight: 700;
 }
 
 .draft-cell {
-	font-size: 12px;
+	font-size: 16px;
 }
 
 .draft-cell i {
-	font-size: 14px;
-}
+	font-size: 16px;
+}*/
 
 .mana-symbols {
 	padding-top: 50px;
@@ -312,6 +318,10 @@ img {
 		width: 50%;
 	}
 
+	.drafts.col-6 {
+		width: 100%
+	}
+
  .hand {
 		display: initial;
 	}
@@ -326,7 +336,6 @@ img {
 	}
 
 	.draft-stats {
-
 		width: 125px;
 		height: 150px;
 		margin: 8px;
@@ -341,32 +350,32 @@ img {
 	}
 
 	.drafts {
-		margin-left: 25%;
+		/*margin-left: 25%;*/
 	}
 
 	.draft-cell {
-		padding-top: 8px;
-		padding-bottom: 8px;
+		/*padding-top: 8px;
+		padding-bottom: 8px;*/
 	}
 
 	.draft-cell:first-child {
-		border-left: 1px solid #191919;
+		/*border-left: 1px solid #191919;*/
 	}
 
 	.draft-cell:last-child {
-		border-right: 1px solid #191919;
+		/*border-right: 1px solid #191919;*/
 	}
 
 	.draft-row:first-child .draft-cell:first-child {
-		border-bottom-left-radius: 3px
+		/*border-bottom-left-radius: 3px*/
 	}
 	.draft-row:first-child .draft-cell:last-child {
-		border-bottom-right-radius: 3px
+		/*border-bottom-right-radius: 3px*/
 	}
 	.draft-row:last-child .draft-cell:first-child {
-		border-bottom-left-radius: 3px
+		/*border-bottom-left-radius: 3px*/
 	}
 	.draft-row:last-child .draft-cell:last-child {
-		border-bottom-right-radius: 3px
+		/*border-bottom-right-radius: 3px*/
 	}
 }

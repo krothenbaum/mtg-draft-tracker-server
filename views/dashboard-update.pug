@@ -1,0 +1,89 @@
+extends layout
+
+block content
+ if !user
+  p no user
+ else
+  main
+   .page-bg
+   section.dashboard.container-fluid
+    .stats
+     //- .container-fluid
+     .row
+      h1 Dashboard
+     .row.inline-block
+      .pie-chart.col-5
+       #donut-charts
+      .draft-stats.col-5
+       .winRate #{winRate}%
+       p win rate
+    .drafts.col-6
+      table.table.shadow
+        thead
+          tr(id='draft-table-header')
+            th(id='heading-details') Details
+            th(id='heading-date') Date
+            th(id='heading-set') Set
+            th(id='heading-format') Format
+            th(id='heading-colors') Colors
+            th(id='heading-record') Record
+        tbody
+        if user.drafts.length > 0
+          each draft in user.drafts
+            tr.draft-info(id= draft.id)
+              td.details +          
+              td= moment(draft.date).format("M/D/YY")
+              td= draft.sets
+              td= draft.format
+              td
+                case draft.colorsPlayed
+                  when 'White Blue'
+                    i.ms.ms-wu.ms-split.ms-cost
+                  when 'Blue Black'
+                    i.ms.ms-ub.ms-split.ms-cost
+                  when 'Black Red'
+                    i.ms.ms-br.ms-split.ms-cost
+                  when 'Red Green'
+                    i.ms.ms-rg.ms-split.ms-cost
+                  when 'Green White'
+                    i.ms.ms-gw.ms-split.ms-cost
+                  when 'White Black'
+                    i.ms.ms-wb.ms-split.ms-cost
+                  when 'Blue Red'
+                    i.ms.ms-ur.ms-split.ms-cost
+                  when 'Black Green'
+                    i.ms.ms-bg.ms-split.ms-cost
+                  when 'Red White'
+                    i.ms.ms-rw.ms-split.ms-cost
+                  when 'Green Blue'
+                    i.ms.ms-gu.ms-split.ms-cost
+              td= matchesWon(draft.matches)
+            each match in draft.matches
+              tr(style='display: none;')
+                td
+                case match.matchName
+                  when 'match1'
+                    td Match 1
+                  when 'match2'
+                    td Match 2
+                  when 'match3'
+                    td Match 3
+                td Games Won
+                td= match.gamesWon
+                td Games Lost
+                td= match.gamesLost
+            tr.edit-delete(style='display: none;')
+              td
+              td
+              td
+              td
+              td
+                form(action=`edit/${draft.id}`)
+                  button.btn(type='submist') Edit
+              td
+                form(role='form', action='/user/draft/delete', method='POST')
+                  input(type='hidden', value= draft.id, name='draftId')
+                  button.btn(type='submit') Delete
+  
+ script(type='text/javascript').
+  var local_donut_data =!{JSON.stringify(donutData)}
