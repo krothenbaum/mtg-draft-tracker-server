@@ -136,6 +136,10 @@ router.post('/user/draft/delete', (req, res) => {
 
 //update a draft record
 router.post('/user/edit/update', (req, res) => {
+	let updatedDate = new Date(req.body.date);
+	updatedDate.setTime( updatedDate.getTime() + updatedDate.getTimezoneOffset()*60*1000 );
+	updatedDate = updatedDate.toISOString();
+
 	if(!req.user) {
 		return res.redirect('/login');
 	}
@@ -145,6 +149,7 @@ router.post('/user/edit/update', (req, res) => {
 
 	User
 		.findOneAndUpdate({ _id : req.user.id, 'drafts._id' : req.body.draftId }, { $set: {
+				'drafts.$.date': updatedDate,
 				'drafts.$.matches': req.body.matches,
 				'drafts.$.colorsPlayed': req.body.colorsPlayed,
 				'drafts.$.format': req.body.format,
