@@ -136,6 +136,7 @@ router.post('/user/draft/delete', (req, res) => {
 
 //update a draft record
 router.post('/user/edit/update', (req, res) => {
+	console.log(req.body);
 	if(!req.user) {
 		return res.redirect('/login');
 	}
