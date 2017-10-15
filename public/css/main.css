@@ -66,22 +66,20 @@ p {
 	display: inline-block;
 	text-align: center;
 	cursor: pointer;
-	/*box-shadow: inset 0 0 0 0 #0e68ab;*/
 }
 
-.draft-cell .btn {
+td .btn {
 	width: 60px;
-	padding: 8px 8px;
+	padding: 4px 4px;
 	margin-top: 0px;
 	font-size: 10px;
 	font-weight: bold;
 }
 
 .btn:hover {
-	/*box-shadow: inset 200px 0 0 0 #0e68ab;*/
 	background-color: #0e68ab;
 	color: #FFF;
-	transition: color .3s ease-in-out;
+	transition: color .1s ease-in-out;
 	transition: background-color .3s ease-in-out;
 }
 
@@ -313,6 +311,19 @@ img {
 	font-size: 60px;
 }
 
+.btn-row {
+	margin-left: 8%;
+	width:100%;
+}
+
+.btn-row form {
+	display: inline-block;
+}
+
+.btn-row form .btn {
+	margin-right: 8px;
+}
+
 @media (min-width: 768px) {
 	.col-6 {
 		width: 50%;
@@ -343,10 +354,6 @@ img {
 
 	.draft-form {
 		margin-left: 33.33%;
-	}
-
-	.draft-btn {
-		margin-left: 92px;
 	}
 
 	.drafts {

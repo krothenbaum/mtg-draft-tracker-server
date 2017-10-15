@@ -47,9 +47,9 @@
 }
 
 .tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  cursor: help;
+  text-decoration: underline;
+  text-decoration-style:dotted; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
@@ -168,6 +168,11 @@ tbody tr:nth-child(even) {
 }*/
 
 @media (min-width: 768px) {
+  .table {
+    margin-left: 10%;
+    width: 80%;
+  }
+
   .dashboard {
     top: 80px;
     right: 0;
