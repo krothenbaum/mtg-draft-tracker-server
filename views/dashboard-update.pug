@@ -27,6 +27,7 @@ block content
             th.tooltip(id='heading-colors', title='Colors played in draft deck') Colors
             th(id='heading-record') Record
             th(id='heading-edit')
+            th(id='heading-delete')
         tbody
         if user.drafts.length > 0
           each draft in user.drafts
@@ -59,7 +60,11 @@ block content
               td= matchesWon(draft.matches)
               td
                 form(action=`edit/${draft.id}`)
-                  button.btn(type='submit') Edit
+                  button.dash-btn(type='submit') Edit
+              td
+                form(action='/user/draft/delete', method='POST' id='delete-form')
+                  input(type='hidden', name='draftId', value=draft._id)
+                  button.dash-btn(type='submit') Delete
                     
  script(type='text/javascript').
   var local_donut_data =!{JSON.stringify(donutData)}

@@ -86,6 +86,3 @@ block content
          option(value='2', selected= draft.matches[2].gamesLost == 2) 2
        .row.btn-row.align-left
         button.btn.draft-btn(type='submit') Submit
-        form(action='/user/draft/delete', method='POST')
-          input(type='hidden', name='draftId', value=draft._id)
-          button.btn.draft-btn(type='submit') Delete

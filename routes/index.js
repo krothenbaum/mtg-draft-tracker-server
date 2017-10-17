@@ -116,6 +116,7 @@ router.post('/register', (req, res) => {
 
 //delete by draft id
 router.post('/user/draft/delete', (req, res) => {
+	console.log(req.body.drafId);
 	if(!req.user) {
 		return res.redirect('/login');
 	}

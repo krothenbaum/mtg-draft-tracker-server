@@ -68,20 +68,32 @@ p {
 	cursor: pointer;
 }
 
-td .btn {
-	width: 60px;
-	padding: 4px 4px;
-	margin-top: 0px;
-	font-size: 10px;
-	font-weight: bold;
-}
-
 .btn:hover {
 	background-color: #0e68ab;
 	color: #FFF;
 	transition: color .1s ease-in-out;
 	transition: background-color .3s ease-in-out;
 }
+
+.dash-btn {
+	border: none;
+	background: none;
+	width: 40px;
+	padding: 0px 0px;
+	margin-top: 0px;
+	font-size: 10px;
+	/*letter-spacing: 2px;*/
+	text-transform: uppercase;
+	display: inline-block;
+	text-align: center;
+	cursor: pointer;
+}
+
+.dash-btn:hover {
+	text-decoration: underline;
+}
+
+
 
 input[type='text'], input[type='password'], input[type='date'], select {
 	height: 42px;
@@ -369,34 +381,10 @@ img {
 	.draft-form {
 		margin-left: 33.33%;
 	}
+}
 
-	.drafts {
-		/*margin-left: 25%;*/
-	}
-
-	.draft-cell {
-		/*padding-top: 8px;
-		padding-bottom: 8px;*/
-	}
-
-	.draft-cell:first-child {
-		/*border-left: 1px solid #191919;*/
-	}
-
-	.draft-cell:last-child {
-		/*border-right: 1px solid #191919;*/
-	}
-
-	.draft-row:first-child .draft-cell:first-child {
-		/*border-bottom-left-radius: 3px*/
-	}
-	.draft-row:first-child .draft-cell:last-child {
-		/*border-bottom-right-radius: 3px*/
-	}
-	.draft-row:last-child .draft-cell:first-child {
-		/*border-bottom-left-radius: 3px*/
-	}
-	.draft-row:last-child .draft-cell:last-child {
-		/*border-bottom-right-radius: 3px*/
+@media (max-width: 320px) {
+	th, td {
+		font-size: 10px;
 	}
 }
