@@ -11,8 +11,4 @@ $(document).ready(function () {
 			$(panel[index]).find('.slideRight').removeClass('slideRightToLeft');
 		},
 	});
-
-	$('.draft-info').click(function(){
-    $(this).nextUntil('.row-spacing').slideToggle('slow');
-	});
 })
